@@ -130,30 +130,38 @@ The core Siren specification doesn't explicitly offer an equivalent of
 [HTML5's `select` element][select]. There is a [proposed update][pr69] that
 would add support for this, but it doesn't provide a way for clients to
 distinguish between a [radio button group](#radio-fields) and a drop-down.
-To resolve this issue, we provide additional semantics for `select` fields.
+To resolve this issue, we provide additional semantics for fields whose `type`
+is `select`.
 
 [select]: https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element
 
-The following property only applies to fields whose `type` is `select`.
+#### `options`
+
+The `options` property is used to specify the field's
+[list of options][opt-list].
+This property MUST be an array of [option object](#option-object)s.
+This property applies only to fields whose `type` is `select`.
 Clients SHOULD ignore this property when present on any other type of field.
 
-#### `options`
+[opt-list]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-option-list
 
 ```json
 {
   "name": "unitType",
   "type": "select",
-  "title": "Unit type",
+  "title": "Select unit type",
   "options": [
-    { "title": "Select unit type" },
     { "title": "Miner", "value": 1 },
     { "title": "Puffer", "value": 2 },
-    { "title": "Snipey", "value": 3 },
+    { "title": "Snipey", "value": 3, "selected": true },
     { "title": "Max", "value": 4 },
     { "title": "Firebot", "value": 5 }
   ]
 }
 ```
+
+The above example is one way to represent the [`select` element][select] from
+the first example in the HTML5 specification.
 
 ### Option Object
 
@@ -161,27 +169,44 @@ Represents an [option] in a drop-down (i.e., a `select` field).
 
 [option]: https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 
-#### `title`
+#### `disabled`
 
-Textual annotation corresponding to the option's [label][option-label]. The
-value MUST be a non-empty string. This property is REQUIRED.
+Indicates that the option is [disabled][opt-disabled], meaning it cannot be
+selected (i.e., `selected` cannot be `true`) for submission.
+This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
-[option-label]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-label
+[opt-disabled]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-disabled
 
-#### `value`
+#### `optgroup`
 
-The value assigned to the option. The value of this property defaults to the
-value of the option object's `title` property in accordance with the HTML5
-specification (see `option`'s [value][option-value]). This property is OPTIONAL.
+Specifies the name of the [group][optgroup] in which the option belongs.
+The group is primarily intended for the purposes of a user interface.
+This property is OPTIONAL and it MUST be a string.
 
-[option-value]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-value
+[optgroup]: https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element
 
 #### `selected`
 
-The [selectedness] of the option. The value MUST be a boolean, and it defaults
-to `false`.
+The [selectedness] of the option.
+This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
 [selectedness]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-selectedness
+
+#### `title`
+
+Textual annotation corresponding to the option's [label][opt-label].
+This property is REQUIRED and its value MUST be a non-empty string.
+
+[opt-label]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-label
+
+#### `value`
+
+The value assigned to the option.
+This property is OPTIONAL and defaults to the value of the option object's
+`title` property in accordance with the HTML5 specification (see `option`'s
+[value][opt-value]).
+
+[opt-value]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-value
 
 ### HTML5 Input Attributes
 
