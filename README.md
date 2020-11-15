@@ -100,6 +100,11 @@ defaults to `false`.
 
 [checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
 
+#### `disabled`
+
+Indicates that the radio button cannot be selected (i.e., `checked` cannot be
+`true`). This property's value MUST be a boolean, and its default is `false`.
+
 #### `title`
 
 Textual annotation of the radio button. Clients can use this as a label for the
