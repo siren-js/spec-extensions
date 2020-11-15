@@ -84,7 +84,7 @@ The `group` property allows for specifying several radio buttons with the same
 The above example is one way to represent the [radio buttons][rb] from the
 example in the HTML5 specification.
 Rather than having `required` on the radio button directly, we utilize the
-[`required` extension](#required) on the field object directly.
+[`required` extension](#required) on the field object.
 
 [rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
 
