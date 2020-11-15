@@ -40,8 +40,8 @@ when, and only when, they appear in all capitals, as shown here.
 
 ## Field Extensions
 
-This sections defines several extension properties to [fields]. Since these are
-extensions, their presence is OPTIONAL in a Siren representation.
+This section defines several extension properties to [fields]. Since these are
+extensions, their presence is OPTIONAL in Siren representations.
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
 
