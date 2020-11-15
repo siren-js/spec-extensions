@@ -261,35 +261,3 @@ This property MUST be a string representing a valid
 Indicates that the field is required, meaning it must be included when
 submitting the corresponding action to the server.
 This property MUST be a boolean and it defaults to `false`.
-
-<!--
-#### `accept`
-
-#### `alt`?
-
-#### `autocomplete`?
-
-#### `checked`
-
-#### `dirname`
-
-#### `list`?
-
-#### `max`
-
-#### `maxlength`
-
-#### `min`
-
-#### `minlength`
-
-#### `placeholder`
-
-#### `readonly`
-
-#### `size`
-
-#### `src`?
-
-#### `step`?
--->
