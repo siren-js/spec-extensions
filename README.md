@@ -72,12 +72,20 @@ The `group` property allows for specifying several radio buttons with the same
   "name": "dog-type",
   "type": "radio",
   "title": "Make your choice",
+  "required": true,
   "group": [
-    { "title": "Pupper", "value": "pupper" },
+    { "title": "Pupper", "value": "pupper", "disabled": true },
     { "title": "Doggo", "value": "doggo" }
   ]
 }
 ```
+
+The above example is one way to represent the [radio buttons][rb] from the
+example in the HTML5 specification.
+Rather than having `required` on the radio button directly, we utilize the
+[`required` extension](#required) on the field object directly.
+
+[rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
 
 ### Radio Object
 
