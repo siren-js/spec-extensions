@@ -51,9 +51,9 @@ Since fields are unique by `name`, there isn't a way to specify a
 [radio button group][rbg] within an [action]. While there is a
 [proposed update][pr69] to the core specification that would support this, the
 update would introduce some oddities. Specifically, a `checkbox` doesn't
-typically provide multiple options (at least in HTML). Also, there's not a way
-for clients to distinguish between a radio button group and a
-[drop-down](#select-fields).
+typically provide multiple options (at least in HTML). Furthermore, the update
+does not provide a way for clients to distinguish between a radio button group
+and a [drop-down](#select-fields).
 
 [action]: https://github.com/kevinswiber/siren#actions-1
 [pr69]: https://github.com/kevinswiber/siren/pull/69
