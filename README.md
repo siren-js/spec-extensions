@@ -92,6 +92,13 @@ Rather than having `required` on the radio button directly, we utilize the
 Represents a radio button as part of a radio button group (i.e., a `radio`
 field).
 
+#### `checked`
+
+The [checkedness] of the radio button. The value MUST be a boolean, and it
+defaults to `false`.
+
+[checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
+
 #### `title`
 
 Textual annotation of the radio button. Clients can use this as a label for the
@@ -104,13 +111,6 @@ accordance with the HTML5 specification (see step 5.7 of
 [constructing the entry list][ctel] algorithm). This property is OPTIONAL.
 
 [ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
-
-#### `checked`
-
-The [checkedness] of the radio button. The value MUST be a boolean, and it
-defaults to `false`.
-
-[checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
 
 ### `select` Fields
 
