@@ -60,13 +60,13 @@ and a [drop-down](#select-fields).
 [pr69]: https://github.com/kevinswiber/siren/pull/69
 [rbg]: https://html.spec.whatwg.org/multipage/input.html#radio-button-group
 
-The following property only applies to fields whose `type` is `radio`.
-Clients SHOULD ignore this property when present on any other type of field.
-
 #### `group`
 
 The `group` property allows for specifying several radio buttons with the same
-`name`. This property MUST be an array of [radio object](#radio-object)s.
+`name`.
+This property MUST be an array of [radio object](#radio-object)s.
+This property applies only to fields whose `type` is `radio`.
+Clients SHOULD ignore this property when present on any other type of field.
 
 ```json
 {
