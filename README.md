@@ -95,26 +95,32 @@ field).
 
 #### `checked`
 
-The [checkedness] of the radio button. The value MUST be a boolean, and it
-defaults to `false`.
+The [checkedness] of the radio button.
+This property MUST be a boolean, and it defaults to `false`.
 
 [checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
 
 #### `disabled`
 
 Indicates that the radio button cannot be selected (i.e., `checked` cannot be
-`true`). This property's value MUST be a boolean, and its default is `false`.
+`true`).
+This property is OPTIONAL, it MUST be a boolean, and its default value is
+`false`.
 
 #### `title`
 
-Textual annotation of the radio button. Clients can use this as a label for the
-radio button. Use of this property is RECOMMENDED.
+Textual annotation of the radio button.
+Clients can use this as a label for the radio button.
+This property MUST be a string.
+This property is OPTIONAL, but including it is RECOMMENDED to avoid "blank"
+radio buttons when rendering to a UI.
 
 #### `value`
 
-The value assigned to the radio button. The value defaults to `"on"` in
-accordance with the HTML5 specification (see step 5.7 of
-[constructing the entry list][ctel] algorithm). This property is OPTIONAL.
+The value assigned to the radio button.
+This property is OPTIONAL and its default value is `"on"`, which is in
+accordance with the HTML5 specification (see step 5.7 of the
+[constructing the entry list][ctel] algorithm).
 
 [ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
 
