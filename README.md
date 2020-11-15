@@ -96,7 +96,7 @@ field).
 #### `checked`
 
 The [checkedness] of the radio button.
-This property MUST be a boolean, and it defaults to `false`.
+This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
 [checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
 
@@ -104,8 +104,7 @@ This property MUST be a boolean, and it defaults to `false`.
 
 Indicates that the radio button cannot be selected (i.e., `checked` cannot be
 `true`).
-This property is OPTIONAL, it MUST be a boolean, and its default value is
-`false`.
+This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
 #### `title`
 
@@ -113,7 +112,7 @@ Textual annotation of the radio button.
 Clients can use this as a label for the radio button.
 This property MUST be a string.
 This property is OPTIONAL, but including it is RECOMMENDED to avoid "blank"
-radio buttons when rendering to a UI.
+radio buttons in a user interface.
 
 #### `value`
 
