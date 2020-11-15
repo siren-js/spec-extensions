@@ -19,6 +19,7 @@
     * [`title`](#title-1)
     * [`value`](#value-1)
   * [HTML5 Input Attributes](#html5-input-attributes)
+    * [`disabled`](#disabled-2)
     * [`files`](#files)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
@@ -211,56 +212,55 @@ This property is OPTIONAL and defaults to the value of the option object's
 
 ### HTML5 Input Attributes
 
-The following properties are correspond to
-[HTML5's input attributes][input-attrs].
+The following properties correspond to HTML5's [input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
 
+#### `disabled`
+
+Indicates that the field is [disabled], meaning its value cannot be mutated and
+it is barred from constraint validation.
+This property MUST be a boolean and it defaults to `false`.
+
+[disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
+
 #### `files`
 
-The [`files` property][files] is intended for use by clients to keep track of
-[selected files][selected-files]. This property is only application to fields
-whose `type` is `file`. The value MUST be an array of [`File` objects][file].
+Intended for use by clients to keep track of [selected files][selected-files].
+This property is only application to fields whose `type` is `file`.
+This property MUST be an array of [`File` objects][file].
 
 [file]: https://w3c.github.io/FileAPI/#dfn-file
-[files]: https://html.spec.whatwg.org/multipage/input.html#dom-input-files
 [selected-files]: https://html.spec.whatwg.org/multipage/input.html#concept-input-type-file-selected
 
 #### `multiple`
 
-The [`multiple` property][multiple] indicates whether the client is allowed to
-specify more than one value. This property is only applicable to fields whose
-`type` is `email`, `file`, or [`select`](#select-fields).
-
-[multiple]: https://html.spec.whatwg.org/multipage/input.html#attr-input-multiple
-
-The value of this property MUST be a boolean, and it defaults to `false`.
+Indicates whether the clients is allowed to specify more than one value.
+This property is only applicable to fields whose `type` is `email`, `file`, or
+[`select`](#select-fields).
+This property MUST be a boolean and it defaults to `false`.
 
 When `multiple` is `true` and `type` is `email`, the field's `value` MUST be an
-array of values.
+array of strings.
 
 #### `pattern`
 
-The [`pattern` property][pattern] specifies a regular expression against which
-the field's `value`, or, when [`multiple`](#multiple) is `true`, each individual
-value, are to be checked. This property is only applicable to fields whose
-`type` is `text`, `search`, `url`, `tel`, `email`, or `password`.
-
-[pattern]: https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern
-
-The value of this property MUST be a string representing a valid
+Specifies a regular expression against which the field's `value` is to be
+checked.
+When [`multiple`](#multiple) is `true`, each individual value is to be checked
+against the pattern.
+This property is only applicable to fields whose `type` is `text`, `search`,
+`url`, `tel`, `email`, or `password`.
+This property MUST be a string representing a valid
 [regular expression][regexp].
 
 [regexp]: https://tc39.es/ecma262/#prod-Pattern
 
 #### `required`
 
-The [`required` property][required] specifies that the field is required. That
-is, it must be included when submitting the corresponding action to the server.
-
-[required]: https://html.spec.whatwg.org/multipage/input.html#concept-input-required
-
-The value of this property MUST be a boolean, and it defaults to `false`.
+Indicates that the field is required, meaning it must be included when
+submitting the corresponding action to the server.
+This property MUST be a boolean and it defaults to `false`.
 
 <!--
 #### `accept`
