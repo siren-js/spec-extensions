@@ -16,7 +16,8 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Defined the `group` extension for `radio` fields
 * Defined semantics for `select` fields
-* Defined additional HTML5 input attributes:
+* Defined additional HTML5 input attributes for fields:
+  * `disabled`
   * `files`
   * `multiple`
   * `pattern`
