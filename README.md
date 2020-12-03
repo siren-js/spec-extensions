@@ -235,7 +235,7 @@ This property MUST be an array of [`File` objects][file].
 
 #### `multiple`
 
-Indicates whether the clients is allowed to specify more than one value.
+Indicates whether the client is allowed to specify more than one value.
 This property is only applicable to fields whose `type` is `email`, `file`, or
 [`select`](#select-fields).
 This property MUST be a boolean and it defaults to `false`.
