@@ -86,7 +86,8 @@ Clients SHOULD ignore this property when present on any other type of field.
 
 The above example is one way to represent the [radio buttons][rb] from the
 example in the HTML5 specification.
-Rather than having `required` on the radio button directly, we utilize the
+Rather than having `required` on the radio button directly (i.e., the
+[radio object](#radio-object)), we utilize the
 [`required` extension](#required) on the field object.
 
 [rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
