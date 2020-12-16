@@ -12,6 +12,7 @@
     * [`value`](#value)
   * [`select` Fields](#select-fields)
     * [`options`](#options)
+    * [`size`](#size)
   * [Option Object](#option-object)
     * [`disabled`](#disabled-1)
     * [`optgroup`](#optgroup)
@@ -165,6 +166,16 @@ Clients SHOULD ignore this property when present on any other type of field.
 
 The above example is one way to represent the [`select` element][select] from
 the first example in the HTML5 specification.
+
+#### `size`
+
+The `size` property of a `select` field refers to the [display size][select-size]
+This property is OPTIONAL and it MUST be a positive integer (i.e., greater than
+zero).
+If this property is absent or not a positive integer, then the default value is
+`4` when [`multiple`](#multiple) is `true`, and 1 otherwise.
+
+[select-size]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-size
 
 ### Option Object
 

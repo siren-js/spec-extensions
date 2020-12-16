@@ -31,6 +31,9 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ## 0.2.0
 
+### Added
+
+* Defined the `size` property for `select` fields.
 ### Changed
 
 * Changed the type requirement for `multiple` `email` fields' `value` property
