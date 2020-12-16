@@ -241,8 +241,8 @@ This property is only applicable to fields whose `type` is `email`, `file`, or
 [`select`](#select-fields).
 This property MUST be a boolean and it defaults to `false`.
 
-When `multiple` is `true` and `type` is `email`, the field's `value` MUST be an
-array of strings.
+When `multiple` is `true` and `type` is `email`, the field's `value` is a string
+containing a list of comma-separated email addresses.
 
 #### `pattern`
 

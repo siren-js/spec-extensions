@@ -29,6 +29,13 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
   * `src`?
   * `step`?
 
+## 0.2.0
+
+### Changed
+
+* Changed the type requirement for `multiple` `email` fields' `value` property
+  ([#2](https://github.com/dillonredding/siren-extensions/issues/2)).
+
 ## 0.1.0 - 2020-12-04
 
 ### Added
