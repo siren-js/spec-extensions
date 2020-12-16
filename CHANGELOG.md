@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
   * `src`?
   * `step`?
 
-## 0.1.0
+## 0.1.0 - 2020-12-04
 
 ### Added
 
