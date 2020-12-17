@@ -222,7 +222,7 @@ The `size` property of a `select` field refers to the [display size][select-size
 This property is OPTIONAL and it MUST be a positive integer (i.e., greater than
 zero).
 If this property is absent or not a positive integer, then the default value is
-`4` when [`multiple`](#multiple) is `true`, and 1 otherwise.
+`4` when [`multiple`](#multiple) is `true`, and `1` otherwise.
 
 [select-size]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-size
 
