@@ -14,7 +14,6 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Defined more HTML5 input attributes for fields:
   * `accept`
-  * `checked`
   * `dirname`
   * `max`
   * `maxlength`
@@ -58,7 +57,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Defined the `group` extension for `radio` fields
 * Defined semantics for `select` fields
-* Defined additional HTML5 input attributes for fields:
+* Defined properties corresponding to common HTML input attributes for fields:
   * `disabled`
   * `files`
   * `multiple`
