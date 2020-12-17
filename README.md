@@ -149,6 +149,9 @@ Clients SHOULD ignore this property when present on any other type of field.
 
 [opt-list]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-option-list
 
+Here's an example representing the first example [`select` element][select] from
+the HTML specification.
+
 ```json
 {
   "name": "unitType",
@@ -163,9 +166,6 @@ Clients SHOULD ignore this property when present on any other type of field.
   ]
 }
 ```
-
-The above example is one way to represent the [`select` element][select] from
-the first example in the HTML5 specification.
 
 #### `size`
 
