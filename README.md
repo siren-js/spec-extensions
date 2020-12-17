@@ -115,6 +115,11 @@ This property MUST be an array of [radio object](#radio-object)s.
 This property applies only to fields whose `type` is `radio`.
 Clients SHOULD ignore this property when present on any other type of field.
 
+The following example shows how to represent the [radio buttons][rb] from the
+example in the HTML specification.
+
+[rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
+
 ```json
 {
   "name": "dog-type",
@@ -128,8 +133,6 @@ Clients SHOULD ignore this property when present on any other type of field.
 }
 ```
 
-The above example is one way to represent the [radio buttons][rb] from the
-example in the HTML specification.
 Rather than having `required` on the radio button directly (i.e., the
 [radio object](#radio-object)), we utilize the
 [`required` extension](#required) on the field object.
