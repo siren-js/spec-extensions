@@ -11,21 +11,21 @@
     * [`files`](#files)
   * [`radio` Fields](#radio-fields)
     * [`group`](#group)
-  * [Radio Object](#radio-object)
-    * [`checked`](#checked-1)
-    * [`disabled`](#disabled)
-    * [`title`](#title)
-    * [`value`](#value-1)
+    * [Radio Object](#radio-object)
+      * [`checked`](#checked-1)
+      * [`disabled`](#disabled)
+      * [`title`](#title)
+      * [`value`](#value-1)
   * [`select` Fields](#select-fields)
     * [`options`](#options)
     * [`size`](#size)
     * [Placeholder Label Option](#placeholder-label-option)
-  * [Option Object](#option-object)
-    * [`disabled`](#disabled-1)
-    * [`optgroup`](#optgroup)
-    * [`selected`](#selected)
-    * [`title`](#title-1)
-    * [`value`](#value-2)
+    * [Option Object](#option-object)
+      * [`disabled`](#disabled-1)
+      * [`optgroup`](#optgroup)
+      * [`selected`](#selected)
+      * [`title`](#title-1)
+      * [`value`](#value-2)
   * [HTML Input Attributes](#html-input-attributes)
     * [`disabled`](#disabled-2)
     * [`multiple`](#multiple)
@@ -136,23 +136,23 @@ Rather than having `required` on the radio button directly (i.e., the
 
 [rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
 
-### Radio Object
+#### Radio Object
 
 Represents a radio button as part of a radio button group (i.e., a `radio`
 field).
 
-#### `checked`
+##### `checked`
 
 The [checkedness] of the radio button.
 This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
-#### `disabled`
+##### `disabled`
 
 Indicates that the radio button cannot be selected (i.e., `checked` cannot be
 `true`).
 This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
-#### `title`
+##### `title`
 
 Textual annotation of the radio button.
 Clients can use this as a label for the radio button.
@@ -160,7 +160,7 @@ This property MUST be a string.
 This property is OPTIONAL, but including it is RECOMMENDED to avoid "blank"
 radio buttons in a user interface.
 
-#### `value`
+##### `value`
 
 The value assigned to the radio button.
 This property is OPTIONAL and its default value is `"on"`, which is in
@@ -248,13 +248,13 @@ from the HTML specification, which contains a placeholder label option.
 }
 ```
 
-### Option Object
+#### Option Object
 
 Represents an [option] in a drop-down (i.e., a `select` field).
 
 [option]: https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 
-#### `disabled`
+##### `disabled`
 
 Indicates that the option is [disabled][opt-disabled], meaning it cannot be
 selected (i.e., `selected` cannot be `true`) for submission.
@@ -262,7 +262,7 @@ This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
 [opt-disabled]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-disabled
 
-#### `optgroup`
+##### `optgroup`
 
 Specifies the name of the [group][optgroup] in which the option belongs.
 The group is primarily intended for the purposes of a user interface.
@@ -270,21 +270,21 @@ This property is OPTIONAL and it MUST be a string.
 
 [optgroup]: https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element
 
-#### `selected`
+##### `selected`
 
 The [selectedness] of the option.
 This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
 [selectedness]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-selectedness
 
-#### `title`
+##### `title`
 
 Textual annotation corresponding to the option's [label][opt-label].
 This property is REQUIRED and its value MUST be a non-empty string.
 
 [opt-label]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-label
 
-#### `value`
+##### `value`
 
 The value assigned to the option.
 This property is OPTIONAL and defaults to the value of the option object's
