@@ -295,7 +295,8 @@ This property is OPTIONAL and defaults to the value of the option object's
 
 ### Common Properties
 
-The following properties correspond to HTML's [input attributes][input-attrs].
+This section defines properties common to several types of fields.
+These properties are based on HTML's [common input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
 
