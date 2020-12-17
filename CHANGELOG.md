@@ -28,16 +28,16 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
-* Defined how `null` or undefined `value`s should be treated.
-* Defined the `checked` property for `checkbox` fields.
-* Defined a default value for `checkbox` fields' `value` property.
-* Defined the `size` property for `select` fields.
-* Defined semantics for placeholder label options.
+* Defined how `null` or undefined `value`s should be treated
+* Defined the `checked` property for `checkbox` fields
+* Defined a default value for `checkbox` fields' `value` property
+* Defined the `size` property for `select` fields
+* Defined semantics for placeholder label options
 
 ### Changed
 
 * Changed the type requirement for `multiple` `email` fields' `value` property
-  ([#2](https://github.com/dillonredding/siren-extensions/issues/2)).
+  ([#2](https://github.com/dillonredding/siren-extensions/issues/2))
 * Clarified `value` requirements for `required` fields
 
 ## 0.1.0 - 2020-12-04
