@@ -3,6 +3,7 @@
 * [Introduction](#introduction)
   * [Conventions](#conventions)
 * [Field Extensions](#field-extensions)
+  * [`value` Coercion](#value-coercion)
   * [`checkbox` Fields](#checkbox-fields)
     * [`checked`](#checked)
     * [`value`](#value)
@@ -53,6 +54,11 @@ This section defines several extension properties to [fields]. Since these are
 extensions, their presence is OPTIONAL in Siren representations.
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
+
+### `value` Coercion
+
+If a field's `value` is undefined (i.e., absent in the representation) or
+`null`, then clients SHOULD treat this as the empty string (`""`).
 
 ### `checkbox` Fields
 
