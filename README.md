@@ -26,7 +26,7 @@
       * [`selected`](#selected)
       * [`title`](#title-1)
       * [`value`](#value-2)
-  * [HTML Input Attributes](#html-input-attributes)
+  * [Common Properties](#common-properties)
     * [`disabled`](#disabled-2)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
@@ -293,7 +293,7 @@ This property is OPTIONAL and defaults to the value of the option object's
 
 [opt-value]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-value
 
-### HTML Input Attributes
+### Common Properties
 
 The following properties correspond to HTML's [input attributes][input-attrs].
 

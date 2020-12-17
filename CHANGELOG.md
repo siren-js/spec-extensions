@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 ### Changed
 
 * Moved mention of `files` property for consistency
+* Renamed the section "HTML Input Attributes" to "Common Properties"
 
 ### Fixed
 
