@@ -38,6 +38,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Changed the type requirement for `multiple` `email` fields' `value` property
   ([#2](https://github.com/dillonredding/siren-extensions/issues/2)).
+* Clarified `value` requirements for `required` fields
 
 ## 0.1.0 - 2020-12-04
 

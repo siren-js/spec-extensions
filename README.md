@@ -328,6 +328,7 @@ This property MUST be a string representing a valid
 
 #### `required`
 
-Indicates that the field is required, meaning it must be included when
-submitting the corresponding action to the server.
+Indicates that the field is required, meaning the field MUST be included when
+submitting the corresponding action to the server, and the `value` MUST NOT be
+the empty string (see [`value` Coercion](#value-coercion)).
 This property MUST be a boolean and it defaults to `false`.
