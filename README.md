@@ -3,13 +3,16 @@
 * [Introduction](#introduction)
   * [Conventions](#conventions)
 * [Field Extensions](#field-extensions)
+  * [`checkbox` Fields](#checkbox-fields)
+    * [`checked`](#checked)
+    * [`value`](#value)
   * [`radio` Fields](#radio-fields)
     * [`group`](#group)
   * [Radio Object](#radio-object)
-    * [`checked`](#checked)
+    * [`checked`](#checked-1)
     * [`disabled`](#disabled)
     * [`title`](#title)
-    * [`value`](#value)
+    * [`value`](#value-1)
   * [`select` Fields](#select-fields)
     * [`options`](#options)
     * [`size`](#size)
@@ -19,7 +22,7 @@
     * [`optgroup`](#optgroup)
     * [`selected`](#selected)
     * [`title`](#title-1)
-    * [`value`](#value-1)
+    * [`value`](#value-2)
   * [HTML Input Attributes](#html-input-attributes)
     * [`disabled`](#disabled-2)
     * [`files`](#files)
@@ -50,6 +53,26 @@ This section defines several extension properties to [fields]. Since these are
 extensions, their presence is OPTIONAL in Siren representations.
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
+
+### `checkbox` Fields
+
+This sections defines additional semantics around `checkbox` fields.
+
+#### `checked`
+
+The `checked` property of a `checkbox` field refers to the [checkedness] of the
+checkbox.
+This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
+
+[checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
+
+#### `value`
+
+The default value for a `checkbox` field's `value` property is `"on"`, which is
+in accordance with the HTML specification (see step 5.7 of the algorithm for
+[constructing the entry list][ctel] during form submission).
+
+[ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
 
 ### `radio` Fields
 
@@ -104,8 +127,6 @@ field).
 The [checkedness] of the radio button.
 This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
-[checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
-
 #### `disabled`
 
 Indicates that the radio button cannot be selected (i.e., `checked` cannot be
@@ -124,10 +145,8 @@ radio buttons in a user interface.
 
 The value assigned to the radio button.
 This property is OPTIONAL and its default value is `"on"`, which is in
-accordance with the HTML specification (see step 5.7 of the
-[constructing the entry list][ctel] algorithm).
-
-[ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
+accordance with the HTML specification (see step 5.7 of the algorithm for
+[constructing the entry list][ctel] during form submission).
 
 ### `select` Fields
 

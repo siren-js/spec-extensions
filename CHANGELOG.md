@@ -28,8 +28,11 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
+* Defined the `checked` property for `checkbox` fields.
+* Defined a default value for `checkbox` fields' `value` property.
 * Defined the `size` property for `select` fields.
 * Defined semantics for placeholder label options.
+
 ### Changed
 
 * Changed the type requirement for `multiple` `email` fields' `value` property
