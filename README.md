@@ -7,6 +7,8 @@
   * [`checkbox` Fields](#checkbox-fields)
     * [`checked`](#checked)
     * [`value`](#value)
+  * [`file` Fields](#file-fields)
+    * [`files`](#files)
   * [`radio` Fields](#radio-fields)
     * [`group`](#group)
   * [Radio Object](#radio-object)
@@ -26,7 +28,6 @@
     * [`value`](#value-2)
   * [HTML Input Attributes](#html-input-attributes)
     * [`disabled`](#disabled-2)
-    * [`files`](#files)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
     * [`required`](#required)
@@ -79,6 +80,18 @@ in accordance with the HTML specification (see step 5.7 of the algorithm for
 [constructing the entry list][ctel] during form submission).
 
 [ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
+
+### `file` Fields
+
+This section defines additional semantics for `file` fields.
+
+#### `files`
+
+Intended for use by clients to keep track of [selected files][selected-files].
+This property MUST be an array of [`File` objects][file].
+
+[file]: https://w3c.github.io/FileAPI/#dfn-file
+[selected-files]: https://html.spec.whatwg.org/multipage/input.html#concept-input-type-file-selected
 
 ### `radio` Fields
 
@@ -293,15 +306,6 @@ it is barred from constraint validation.
 This property MUST be a boolean and it defaults to `false`.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
-
-#### `files`
-
-Intended for use by clients to keep track of [selected files][selected-files].
-This property is only application to fields whose `type` is `file`.
-This property MUST be an array of [`File` objects][file].
-
-[file]: https://w3c.github.io/FileAPI/#dfn-file
-[selected-files]: https://html.spec.whatwg.org/multipage/input.html#concept-input-type-file-selected
 
 #### `multiple`
 

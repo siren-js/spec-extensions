@@ -34,6 +34,10 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined the `size` property for `select` fields
 * Defined semantics for placeholder label options
 
+### Changed
+
+* Moved mention of `files` property for consistency
+
 ### Fixed
 
 * Aligned type requirement for `multiple` `email` fields' `value` property with
