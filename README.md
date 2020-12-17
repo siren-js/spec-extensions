@@ -115,6 +115,10 @@ This property MUST be an array of [radio object](#radio-object)s.
 This property applies only to fields whose `type` is `radio`.
 Clients SHOULD ignore this property when present on any other type of field.
 
+When the `radio` field is [required](#required), one of the radio objects MUST
+be [checked](#checked-1) in the `group` array.
+Two or more radio objects in the same group MUST NOT be checked at a given time.
+
 The following example shows how to represent the [radio buttons][rb] from the
 example in the HTML specification.
 
@@ -190,6 +194,11 @@ This property applies only to fields whose `type` is `select`.
 Clients SHOULD ignore this property when present on any other type of field.
 
 [opt-list]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-option-list
+
+When the `select` field is [required](#required), at least one of the option
+objects MUST be [selected](#selected) in the `options` array.
+Multiple options can be selected if the field allows
+[multiple](#multiple) values.
 
 Here's an example representing the first example [`select` element][select] from
 the HTML specification.
@@ -337,8 +346,10 @@ This property MUST be a string representing a valid
 
 #### `required`
 
-Indicates that the field is required, meaning the field MUST be included when
-submitting the corresponding action to the server, and the `value` MUST NOT be
-the empty string (see [`value` Coercion](#value-coercion)).
+Indicates that the field is required, meaning the value submitted to the server
+MUST NOT be the empty string (see [`value` Coercion](#value-coercion)).
+With the exception of [`radio` fields](#radio-fields) and
+[`select` fields](#select-fields), the value submitted to the server is the
+value of the `value` property.
 This property applies to all field types.
 This property MUST be a boolean and it defaults to `false`.

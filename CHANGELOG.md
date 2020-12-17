@@ -44,7 +44,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Aligned type requirement for `multiple` `email` fields' `value` property with
   the HTML specification ([#2])
-* Clarified `value` requirements for `required` fields
+* Clarified requirements for `required` fields
 
 [#2]: https://github.com/dillonredding/siren-extensions/issues/2
 
