@@ -141,8 +141,6 @@ Rather than having `required` on the radio button directly (i.e., the
 [radio object](#radio-object)), we utilize the
 [`required` extension](#required) on the field object.
 
-[rb]: https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)
-
 #### Radio Object
 
 Represents a radio button as part of a radio button group (i.e., a `radio`
