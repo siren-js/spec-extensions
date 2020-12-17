@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined a default value for `checkbox` fields' `value` property
 * Defined the `size` property for `select` fields
 * Defined semantics for placeholder label options
+* Clarified when `disabled` and `required` properties apply
 
 ### Changed
 

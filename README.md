@@ -304,6 +304,7 @@ These properties are based on HTML's [common input attributes][input-attrs].
 
 Indicates that the field is [disabled], meaning its value cannot be mutated and
 it is barred from constraint validation.
+This property applies to all field types.
 This property MUST be a boolean and it defaults to `false`.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
@@ -336,4 +337,5 @@ This property MUST be a string representing a valid
 Indicates that the field is required, meaning the field MUST be included when
 submitting the corresponding action to the server, and the `value` MUST NOT be
 the empty string (see [`value` Coercion](#value-coercion)).
+This property applies to all field types.
 This property MUST be a boolean and it defaults to `false`.
