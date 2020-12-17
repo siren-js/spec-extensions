@@ -34,7 +34,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined the `size` property for `select` fields
 * Defined semantics for placeholder label options
 
-### Changed
+### Fixed
 
 * Changed the type requirement for `multiple` `email` fields' `value` property
   ([#2](https://github.com/dillonredding/siren-extensions/issues/2))
