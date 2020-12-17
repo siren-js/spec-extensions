@@ -20,7 +20,7 @@
     * [`selected`](#selected)
     * [`title`](#title-1)
     * [`value`](#value-1)
-  * [HTML5 Input Attributes](#html5-input-attributes)
+  * [HTML Input Attributes](#html-input-attributes)
     * [`disabled`](#disabled-2)
     * [`files`](#files)
     * [`multiple`](#multiple)
@@ -87,7 +87,7 @@ Clients SHOULD ignore this property when present on any other type of field.
 ```
 
 The above example is one way to represent the [radio buttons][rb] from the
-example in the HTML5 specification.
+example in the HTML specification.
 Rather than having `required` on the radio button directly (i.e., the
 [radio object](#radio-object)), we utilize the
 [`required` extension](#required) on the field object.
@@ -124,7 +124,7 @@ radio buttons in a user interface.
 
 The value assigned to the radio button.
 This property is OPTIONAL and its default value is `"on"`, which is in
-accordance with the HTML5 specification (see step 5.7 of the
+accordance with the HTML specification (see step 5.7 of the
 [constructing the entry list][ctel] algorithm).
 
 [ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
@@ -132,7 +132,7 @@ accordance with the HTML5 specification (see step 5.7 of the
 ### `select` Fields
 
 The core Siren specification doesn't explicitly offer an equivalent of
-[HTML5's `select` element][select]. There is a [proposed update][pr69] that
+[HTML's `select` element][select]. There is a [proposed update][pr69] that
 would add support for this, but it doesn't provide a way for clients to
 distinguish between a [radio button group](#radio-fields) and a drop-down.
 To resolve this issue, we provide additional semantics for fields whose `type`
@@ -250,14 +250,14 @@ This property is REQUIRED and its value MUST be a non-empty string.
 
 The value assigned to the option.
 This property is OPTIONAL and defaults to the value of the option object's
-`title` property in accordance with the HTML5 specification (see `option`'s
+`title` property in accordance with the HTML specification (see `option`'s
 [value][opt-value]).
 
 [opt-value]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-value
 
-### HTML5 Input Attributes
+### HTML Input Attributes
 
-The following properties correspond to HTML5's [input attributes][input-attrs].
+The following properties correspond to HTML's [input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
 
