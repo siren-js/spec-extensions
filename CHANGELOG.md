@@ -14,20 +14,15 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Defined more HTML5 input attributes for fields:
   * `accept`
-  * `alt`?
-  * `autocomplete`?
   * `checked`
   * `dirname`
-  * `list`?
   * `max`
   * `maxlength`
   * `min`
   * `minlength`
   * `placeholder`
   * `readonly`
-  * `size`
-  * `src`?
-  * `step`?
+  * `step`
 
 ## 0.2.0
 
