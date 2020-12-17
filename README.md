@@ -13,6 +13,7 @@
   * [`select` Fields](#select-fields)
     * [`options`](#options)
     * [`size`](#size)
+    * [Placeholder Label Option](#placeholder-label-option)
   * [Option Object](#option-object)
     * [`disabled`](#disabled-1)
     * [`optgroup`](#optgroup)
@@ -176,6 +177,38 @@ If this property is absent or not a positive integer, then the default value is
 `4` when [`multiple`](#multiple) is `true`, and 1 otherwise.
 
 [select-size]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-size
+
+#### Placeholder Label Option
+
+If a `select` field is [required](#required), does not allow
+[multiple](#multiple) selections, and has a [`size`](#size) of 1; and if the
+[`value`](#value-1) of the first [option object](#option-object) in the `select`
+field's [`options`](#options) (if any) is absent or the empty string, and that
+option object's `optgroup` property is undefined, then that option is the
+`select` field's **placeholder label option**.
+
+If a `select` field is [required](#required), does not allow
+[multiple](#multiple) selections, and has a [`size`](#size) of 1, then the
+`select` field element MUST have a placeholder label option.
+
+The following example represents the second example [`select` element][select]
+from the HTML specification, which contains a placeholder label option.
+
+```json
+{
+  "name": "unitType",
+  "type": "select",
+  "required": true,
+  "options": [
+    { "title": "Select unit type" },
+    { "title": "Miner", "value": 1 },
+    { "title": "Puffer", "value": 2 },
+    { "title": "Snipey", "value": 3 },
+    { "title": "Max", "value": 4 },
+    { "title": "Firebot", "value": 5 }
+  ]
+}
+```
 
 ### Option Object
 
