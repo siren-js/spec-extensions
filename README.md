@@ -3,6 +3,7 @@
 * [Introduction](#introduction)
   * [Conventions](#conventions)
 * [Field Extensions](#field-extensions)
+  * [`value` Type and Format](#value-type-and-format)
   * [`value` Coercion](#value-coercion)
   * [`checkbox` Fields](#checkbox-fields)
     * [`checked`](#checked)
@@ -61,6 +62,46 @@ This section defines several extension properties to [fields]. Since these are
 extensions, their presence is OPTIONAL in Siren representations.
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
+
+### `value` Type and Format
+
+The following table summarizes the RECOMMENDED [types][rfc8259-1] and format of
+a field's `value` property based on the field's `type`:
+
+[rfc8259-1]: https://tools.ietf.org/html/rfc8259#section-1
+
+<!-- Note: datetime-local below uses a non-breaking hyphen  -->
+
+| Field&nbsp;`type` | Allowed&nbsp;`value`&nbsp;Types   | `value` Format
+|-------------------|-----------------------------------|--------
+| `hidden`          | Boolean,&nbsp;Number,&nbsp;String |
+| `text`            | String                            |
+| `search`          | String                            |
+| `url`             | String                            | The empty string or a [valid][valid-url] [absolute URL][abs-url] |
+| `tel`             | String                            |
+| `email`           | String                            | The empty string, or a [valid email address list][valid-emails], if [`multiple`](#multiple) is `true`; otherwise, a [valid email address][valid-email]
+| `password`        | String                            |
+| `date`            | String                            | The empty string or a [valid date string][valid-date]
+| `month`           | String                            | The empty string or a [valid month string][valid-month]
+| `week`            | String                            | The empty string or a [valid week string][valid-week]
+| `time`            | String                            | The empty string or a [valid time string][valid-time]
+| `datetime‑local`  | String                            | The empty string or a [valid local date and time string][valid-datetime]
+| `number`          | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string
+| `range`           | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string
+| `color`           | String                            | A [valid simple color][valid-color]
+| `checkbox`        | Boolean, Number, String           |
+
+[abs-url]: https://url.spec.whatwg.org/#syntax-url-absolute
+[valid-color]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-simple-colour
+[valid-date]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+[valid-datetime]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-local-date-and-time-string
+[valid-email]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+[valid-emails]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address-list
+[valid-month]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-month-string
+[valid-number]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-floating-point-number
+[valid-time]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-time-string
+[valid-url]: https://url.spec.whatwg.org/#valid-url-string
+[valid-week]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-week-string
 
 ### `value` Coercion
 

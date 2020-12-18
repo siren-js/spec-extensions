@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
+* Added recommendation for field `value`'s types and format based on field's
+  `type`.
 * Defined how `null` or undefined field `value`s should be treated
 * Defined the `checked` property for `checkbox` fields
 * Defined a default value for `checkbox` fields' `value` property
