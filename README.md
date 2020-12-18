@@ -493,8 +493,8 @@ This property applies to all field types.
 The `min` and `max` properties indicate the allowed range of values for a field.
 These properties SHOULD align with the type and format of the field's `value`
 (see [`value` Type and Format](#value-type-and-format)).
-These property apply to fields whose `type` is `date`, `month`, `week`, `time`,
-`datetime-local`, `number`, or `range`.
+These properties apply to fields whose `type` is `date`, `month`, `week`,
+`time`, `datetime-local`, `number`, or `range`.
 `range` fields have a default `min` value of `0` and a default `max` value of
 `100`.
 
