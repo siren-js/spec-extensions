@@ -32,6 +32,7 @@
     * [`rows`](#rows)
     * [`wrap`](#wrap)
   * [Common Properties](#common-properties)
+    * [`dirname`](#dirname)
     * [`disabled`](#disabled-2)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
@@ -422,6 +423,18 @@ This section defines properties common to several types of fields.
 These properties are based on HTML's [common input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
+
+#### `dirname`
+
+Enables the submission of the field `value`'s [directionality], giving the name
+of the entry that contains this value during action submission (see
+[Submitting element directionality][submit-directionality] and step 5.13 of the
+[constructing the entry list][ctel] algorithm).
+This property is OPTIONAL and it MUST be a non-empty string.
+This property applies to fields whose `type` is `text`, `search`, or `textarea`.
+
+[directionality]: https://html.spec.whatwg.org/multipage/dom.html#the-directionality
+[submit-directionality]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#submitting-element-directionality:-the-dirname-attribute
 
 #### `disabled`
 

@@ -33,6 +33,8 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined semantics for placeholder label options in `select` fields
 * Defined the `accept` property for `files` fields
 * Defined semantics for `textarea` fields
+* Defined more common properties based on common HTML input attributes
+  * `dirname`
 * Clarified when `disabled` and `required` properties apply to fields
 
 ### Changed
