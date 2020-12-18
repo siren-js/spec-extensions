@@ -27,13 +27,13 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
-* Defined how `null` or undefined `value`s should be treated
+* Defined how `null` or undefined field `value`s should be treated
 * Defined the `checked` property for `checkbox` fields
 * Defined a default value for `checkbox` fields' `value` property
 * Defined the `size` property for `select` fields
-* Defined semantics for placeholder label options
+* Defined semantics for placeholder label options in `select` fields
 * Defined semantics for `textarea` fields
-* Clarified when `disabled` and `required` properties apply
+* Clarified when `disabled` and `required` properties apply to fields
 
 ### Changed
 
