@@ -39,6 +39,7 @@
     * [`maxlength` and `minlength`](#maxlength-and-minlength)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
+    * [`placeholder`](#placeholder)
     * [`required`](#required)
 
 ## Introduction
@@ -527,6 +528,17 @@ This property is only applicable to fields whose `type` is `text`, `search`,
 `url`, `tel`, `email`, or `password`.
 
 [regexp]: https://tc39.es/ecma262/#prod-Pattern
+
+#### `placeholder`
+
+Intended for use as an `input` element's [placeholder attribute][placeholder]
+when representing the field in HTML.
+This differs from the field's `title` in that it is not meant as a label when
+displaying the field in a UI.
+This property MUST be a string that does not contain U+000A LINE FEED (LF) or
+U+000D CARRIAGE RETURN (CR) characters.
+
+[placeholder]: https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder
 
 #### `required`
 
