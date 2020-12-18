@@ -430,7 +430,7 @@ Enables the submission of the field `value`'s [directionality], giving the name
 of the entry that contains this value during action submission (see
 [Submitting element directionality][submit-directionality] and step 5.13 of the
 [constructing the entry list][ctel] algorithm).
-This property is OPTIONAL and it MUST be a non-empty string.
+This property MUST be a non-empty string.
 This property applies to fields whose `type` is `text`, `search`, or `textarea`.
 
 [directionality]: https://html.spec.whatwg.org/multipage/dom.html#the-directionality
@@ -440,17 +440,17 @@ This property applies to fields whose `type` is `text`, `search`, or `textarea`.
 
 Indicates that the field is [disabled], meaning its value cannot be mutated and
 it is barred from constraint validation.
-This property applies to all field types.
 This property MUST be a boolean and it defaults to `false`.
+This property applies to all field types.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
 
 #### `multiple`
 
 Indicates whether the client is allowed to specify more than one value.
+This property MUST be a boolean and it defaults to `false`.
 This property is only applicable to fields whose `type` is `email`, `file`, or
 [`select`](#select-fields).
-This property MUST be a boolean and it defaults to `false`.
 
 When `multiple` is `true` and `type` is `email`, the field's `value` is a string
 containing a list of comma-separated email addresses.
@@ -461,10 +461,10 @@ Specifies a regular expression against which the field's `value` is to be
 checked.
 When [`multiple`](#multiple) is `true`, each individual value is to be checked
 against the pattern.
-This property is only applicable to fields whose `type` is `text`, `search`,
-`url`, `tel`, `email`, or `password`.
 This property MUST be a string representing a valid
 [regular expression][regexp].
+This property is only applicable to fields whose `type` is `text`, `search`,
+`url`, `tel`, `email`, or `password`.
 
 [regexp]: https://tc39.es/ecma262/#prod-Pattern
 
@@ -475,5 +475,5 @@ MUST NOT be the empty string (see [`value` Coercion](#value-coercion)).
 With the exception of [`radio` fields](#radio-fields) and
 [`select` fields](#select-fields), the value submitted to the server is the
 value of the `value` property.
-This property applies to all field types.
 This property MUST be a boolean and it defaults to `false`.
+This property applies to all field types.
