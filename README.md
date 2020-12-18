@@ -26,6 +26,10 @@
       * [`selected`](#selected)
       * [`title`](#title-1)
       * [`value`](#value-2)
+  * [`textarea` Fields](#textarea-fields)
+    * [`cols`](#cols)
+    * [`rows`](#rows)
+    * [`wrap`](#wrap)
   * [Common Properties](#common-properties)
     * [`disabled`](#disabled-2)
     * [`multiple`](#multiple)
@@ -302,6 +306,58 @@ This property is OPTIONAL and defaults to the value of the option object's
 [value][opt-value]).
 
 [opt-value]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-option-value
+
+### `textarea` Fields
+
+This section adds semantics for fields whose `type` is `textarea`, which
+corresponds to [HTML's `textarea` element][textarea], a multiline plain text
+control.
+A `textarea` field's `value` property coincides with a `textarea` element's text
+content.
+There the `value` of a `textarea` field MUST be a string.
+
+[textarea]: https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element
+
+#### `cols`
+
+The `cols` property specifies the field's **character width**: the expected
+maximum number of characters per line.
+This property is OPTIONAL and it MUST be a positive integer (i.e., greater than
+zero).
+
+If the `cols` property is missing or not a positive integer, the default value
+is `20`.
+
+#### `rows`
+
+The `rows` property specifies the field's **character height**: the number of
+lines to show.
+This property is OPTIONAL and it MUST be a positive integer (i.e., greater than
+zero).
+
+If the `rows` property is missing or not a positive integer, the default value
+is `2`.
+
+#### `wrap`
+
+The `wrap` property specifies how the field's `value` is wrapped when submitting
+the corresponding action.
+This property is OPTIONAL and its value MUST be one of two strings: `soft` or
+`hard`.
+
+When `wrap` is set to `soft`, the field's `value` MUST NOT be wrapped before
+being submitted.
+
+When `wrap` is set to `hard`, the field's `value` MUST be wrapped by the user
+agent as follows before being submitted:
+Insert U+000D CARRIAGE RETURN U+000A LINE FEED (CRLF) character pairs into the
+string using an implementation-defined algorithm so that each line has no more
+than [`cols`](#cols) characters. For the purposes of this requirement, lines are
+delimited by the start of the string, the end of the string, and U+000D CARRIAGE
+RETURN U+000A LINE FEED (CRLF) character pairs.
+
+If the `wrap` property is missing or is neither of the string `soft` nor `hard`,
+then the default value is `soft`.
 
 ### Common Properties
 
