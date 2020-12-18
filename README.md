@@ -36,6 +36,7 @@
     * [`dirname`](#dirname)
     * [`disabled`](#disabled-2)
     * [`min` and `max`](#min-and-max)
+    * [`maxlength` and `minlength`](#maxlength-and-minlength)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
     * [`required`](#required)
@@ -496,6 +497,13 @@ These property apply to fields whose `type` is `date`, `month`, `week`, `time`,
 `datetime-local`, `number`, or `range`.
 `range` fields have a default `min` value of `0` and a default `max` value of
 `100`.
+
+#### `maxlength` and `minlength`
+
+Declares inclusive upper (`maxlength`) and lower (`minlength`) bounds on the
+number of characters in a field's `value`.
+These properties MUST be either a number or a string representing a
+[valid floating-point number][valid-number].
 
 #### `multiple`
 
