@@ -490,7 +490,7 @@ This property applies to all field types.
 
 #### `min` and `max`
 
-The `min` and `max` properties indicate the allowed range of values for a field.
+Indicate the allowed range of values for a field.
 These properties SHOULD align with the type and format of the field's `value`
 (see [`value` Type and Format](#value-type-and-format)).
 These properties apply to fields whose `type` is `date`, `month`, `week`,
@@ -500,7 +500,7 @@ These properties apply to fields whose `type` is `date`, `month`, `week`,
 
 #### `maxlength` and `minlength`
 
-Declares inclusive upper (`maxlength`) and lower (`minlength`) bounds on the
+Declare inclusive upper (`maxlength`) or lower (`minlength`) bounds on the
 number of characters in a field's `value`.
 These properties MUST be either a number or a string representing a
 [valid floating-point number][valid-number].
