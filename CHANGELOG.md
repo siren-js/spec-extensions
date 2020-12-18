@@ -13,7 +13,6 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 ### Added
 
 * Defined more HTML5 input attributes for fields:
-  * `accept`
   * `dirname`
   * `max`
   * `maxlength`
@@ -32,6 +31,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined a default value for `checkbox` fields' `value` property
 * Defined the `size` property for `select` fields
 * Defined semantics for placeholder label options in `select` fields
+* Defined the `accept` property for `files` fields
 * Defined semantics for `textarea` fields
 * Clarified when `disabled` and `required` properties apply to fields
 

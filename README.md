@@ -8,6 +8,7 @@
     * [`checked`](#checked)
     * [`value`](#value)
   * [`file` Fields](#file-fields)
+    * [`accept`](#accept)
     * [`files`](#files)
   * [`radio` Fields](#radio-fields)
     * [`group`](#group)
@@ -88,6 +89,62 @@ in accordance with the HTML specification (see step 5.7 of the algorithm for
 ### `file` Fields
 
 This section defines additional semantics for `file` fields.
+
+#### `accept`
+
+The `accept` property provides user agents with a hint of what file types will
+be accepted.
+
+This property is OPTIONAL and its value MUST be an array whose elements MUST be
+an ASCII case-insensitive match for one of the following:
+
+* The string `"audio/*"`
+  * Indicates that sound files are accepted
+* The string `"video/*"`
+  * Indicates that video files are accepted
+* The string `"image/*"`
+  * Indicates that image files are accepted
+* A [valid MIME type string with no parameters][vmtswnp]
+  * Indicates that files of the specified type are accepted
+* A string whose first character is a U+002E FULL STOP character (.)
+  * Indicates that files with the specified file extension are accepted
+
+[vmtswnp]: https://mimesniff.spec.whatwg.org/#valid-mime-type-with-no-parameters
+
+The elements of the `accept` array MUST NOT be ASCII case-insensitive matches
+for any of the other elements (i.e., duplicates are not allowed).
+
+User agents MAY use the value of this property to display a more appropriate
+user interface than a generic file picker.
+For instance, given the value `["image/*"]`, a user agent could offer the user
+the option of using a local camera or selecting a photograph from their photo
+collection; given the value `["audio/*"]`, a user agent could offer the user the
+option of recording a clip using a headset microphone.
+
+User agents SHOULD prevent the user from selecting files that are not accepted
+by one (or more) of these elements.
+
+Servers are encouraged to specify both any MIME types and any corresponding
+extensions when looking for data in a specific format.
+
+The following example shows how to represent the example
+[File Upload `input`][file-upload] from the HTML specification.
+
+[file-upload]: https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)
+
+```json
+{
+  "name": "doc",
+  "type": "file",
+  "accept": [
+    ".doc",
+    ".docx",
+    ".xml",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  ]
+}
+```
 
 #### `files`
 
