@@ -12,8 +12,12 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
-* Defined more HTML5 input attributes for fields:
-  * `step`
+* Defined common `step` property for fields
+
+### Fixed
+
+* Clarified how clients should treat extension properties with an invalid type
+  or unspecified value
 
 ## 0.2.0
 
