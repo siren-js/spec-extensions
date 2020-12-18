@@ -13,10 +13,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 ### Added
 
 * Defined more HTML5 input attributes for fields:
-  * `dirname`
-  * `max`
   * `maxlength`
-  * `min`
   * `minlength`
   * `placeholder`
   * `readonly`
@@ -37,6 +34,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Defined semantics for `textarea` fields
 * Defined more common properties based on common HTML input attributes
   * `dirname`
+  * `min` and `max`
 * Clarified when `disabled` and `required` properties apply to fields
 
 ### Changed

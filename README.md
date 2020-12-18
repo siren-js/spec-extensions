@@ -35,6 +35,7 @@
   * [Common Properties](#common-properties)
     * [`dirname`](#dirname)
     * [`disabled`](#disabled-2)
+    * [`min` and `max`](#min-and-max)
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
     * [`required`](#required)
@@ -485,6 +486,16 @@ This property MUST be a boolean and it defaults to `false`.
 This property applies to all field types.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
+
+#### `min` and `max`
+
+The `min` and `max` properties indicate the allowed range of values for a field.
+These properties SHOULD align with the type and format of the field's `value`
+(see [`value` Type and Format](#value-type-and-format)).
+These property apply to fields whose `type` is `date`, `month`, `week`, `time`,
+`datetime-local`, `number`, or `range`.
+`range` fields have a default `min` value of `0` and a default `max` value of
+`100`.
 
 #### `multiple`
 
