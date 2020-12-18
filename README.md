@@ -486,6 +486,8 @@ This property applies to fields whose `type` is `text`, `search`, or `textarea`.
 Indicates that the field is [disabled], meaning its value cannot be mutated and
 it is barred from constraint validation.
 This property MUST be a boolean and it defaults to `false`.
+When `true`, the field's `value` is immutable and barred from constraint
+validation.
 This property applies to all field types.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
