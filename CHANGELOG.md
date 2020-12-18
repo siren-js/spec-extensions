@@ -13,7 +13,6 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 ### Added
 
 * Defined more HTML5 input attributes for fields:
-  * `readonly`
   * `step`
 
 ## 0.2.0
@@ -36,6 +35,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
   * `min`
   * `minlength`
   * `placeholder`
+  * `readonly`
 
 ### Changed
 

@@ -40,6 +40,7 @@
     * [`multiple`](#multiple)
     * [`pattern`](#pattern)
     * [`placeholder`](#placeholder)
+    * [`readonly`](#readonly)
     * [`required`](#required)
 
 ## Introduction
@@ -539,6 +540,13 @@ This property MUST be a string that does not contain U+000A LINE FEED (LF) or
 U+000D CARRIAGE RETURN (CR) characters.
 
 [placeholder]: https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder
+
+#### `readonly`
+
+Indicates whether or not the field can be edited.
+This property MUST be a boolean and it defaults to `false`.
+When `true`, the field's `value` is immutable and barred from constraint
+validation.
 
 #### `required`
 
