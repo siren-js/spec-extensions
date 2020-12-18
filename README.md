@@ -469,6 +469,23 @@ These properties are based on HTML's [common input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
 
+The following table summarizes where a property is applicable based on a field's
+`type`:
+
+|               | `text`, `search` | `url`, `tel` | `email` | `password` | `date`, `month`, `week`, `time`, `datetime-local` | `number` | `range` | `checkbox`, `radio` | `file`  | `select` | `textarea` |
+|---------------|:----------------:|:------------:|:-------:|:----------:|:-------------------------------------------------:|:--------:|:-------:|:-------------------:|:-------:|:--------:|:----------:|
+| `dirname`     | &check;          |              |         |            |                                                   |          |         |                     |         |          | &check;    |
+| `disabled`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  | &check; | &check;             | &check; | &check;  | &check;    |
+| `max`         |                  |              |         |            | &check;                                           | &check;  | &check; |                     |         |          |            |
+| `maxlength`   | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          | &check;    |
+| `min`         |                  |              |         |            | &check;                                           | &check;  | &check; |                     |         |          |            |
+| `minlength`   | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          | &check;    |
+| `multiple`    |                  |              | &check; |            |                                                   |          |         |                     | &check; | &check;  |            |
+| `pattern`     | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          |            |
+| `placeholder` | &check;          | &check;      | &check; | &check;    |                                                   | &check;  |         |                     |         |          | &check;    |
+| `readonly`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  |         |                     |         |          | &check;    |
+| `required`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  |         | &check;             | &check; | &check;  | &check;    |
+
 #### `dirname`
 
 Enables the submission of the field `value`'s [directionality], giving the name
@@ -476,7 +493,6 @@ of the entry that contains this value during action submission (see
 [Submitting element directionality][submit-directionality] and step 5.13 of the
 [constructing the entry list][ctel] algorithm).
 This property MUST be a non-empty string.
-This property applies to fields whose `type` is `text`, `search`, or `textarea`.
 
 [directionality]: https://html.spec.whatwg.org/multipage/dom.html#the-directionality
 [submit-directionality]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#submitting-element-directionality:-the-dirname-attribute
@@ -488,7 +504,6 @@ it is barred from constraint validation.
 This property MUST be a boolean and it defaults to `false`.
 When `true`, the field's `value` is immutable and barred from constraint
 validation.
-This property applies to all field types.
 
 [disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
 
@@ -513,8 +528,6 @@ These properties MUST be either a number or a string representing a
 
 Indicates whether the client is allowed to specify more than one value.
 This property MUST be a boolean and it defaults to `false`.
-This property is only applicable to fields whose `type` is `email`, `file`, or
-[`select`](#select-fields).
 
 When `multiple` is `true` and `type` is `email`, the field's `value` is a string
 containing a list of comma-separated email addresses.
@@ -527,8 +540,6 @@ When [`multiple`](#multiple) is `true`, each individual value is to be checked
 against the pattern.
 This property MUST be a string representing a valid
 [regular expression][regexp].
-This property is only applicable to fields whose `type` is `text`, `search`,
-`url`, `tel`, `email`, or `password`.
 
 [regexp]: https://tc39.es/ecma262/#prod-Pattern
 
@@ -558,4 +569,3 @@ With the exception of [`radio` fields](#radio-fields) and
 [`select` fields](#select-fields), the value submitted to the server is the
 value of the `value` property.
 This property MUST be a boolean and it defaults to `false`.
-This property applies to all field types.

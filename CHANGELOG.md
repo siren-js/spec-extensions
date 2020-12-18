@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
   * `minlength`
   * `placeholder`
   * `readonly`
+* Added table summarizing when common properties apply to a field
 
 ### Changed
 
@@ -46,6 +47,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Aligned type requirement for `multiple` `email` fields' `value` property with
   the HTML specification ([#2])
+* Clarified when `disabled` and `required` properties apply to fields
 * Clarified what `disabled` means for the field's `value`.
 * Clarified requirements for `required` fields
 
