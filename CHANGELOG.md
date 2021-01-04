@@ -12,30 +12,62 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
-* Defined more HTML5 input attributes for fields:
-  * `accept`
-  * `alt`?
-  * `autocomplete`?
-  * `checked`
+* Defined common `step` property for fields
+
+### Fixed
+
+* Clarified how clients should treat extension properties with an invalid type
+  or unspecified value
+
+## 0.2.0
+
+### Added
+
+* Added recommendation for field `value`'s types and format based on field's
+  `type`.
+* Defined how `null` or undefined field `value`s should be treated
+* Defined the `checked` property for `checkbox` fields
+* Defined a default value for `checkbox` fields' `value` property
+* Defined the `size` property for `select` fields
+* Defined semantics for placeholder label options in `select` fields
+* Defined the `accept` property for `files` fields
+* Defined semantics for `textarea` fields
+* Defined more common properties based on common HTML input attributes
   * `dirname`
-  * `list`?
   * `max`
   * `maxlength`
   * `min`
   * `minlength`
   * `placeholder`
   * `readonly`
-  * `size`
-  * `src`?
-  * `step`?
+* Added table summarizing when common properties apply to a field
 
-## 0.1.0
+### Changed
+
+* Moved mention of `files` property for consistency
+* Renamed the section "HTML Input Attributes" to "Common Properties"
+
+### Fixed
+
+* Aligned type requirement for `multiple` `email` fields' `value` property with
+  the HTML specification ([#2])
+* Clarified when `disabled` and `required` properties apply to fields
+* Clarified what `disabled` means for the field's `value`.
+* Clarified requirements for `required` fields
+
+[#2]: https://github.com/dillonredding/siren-extensions/issues/2
+
+### Removed
+
+* Removed mentions of the HTML version
+
+## 0.1.0 - 2020-12-04
 
 ### Added
 
 * Defined the `group` extension for `radio` fields
 * Defined semantics for `select` fields
-* Defined additional HTML5 input attributes for fields:
+* Defined field properties corresponding to common HTML input attributes:
   * `disabled`
   * `files`
   * `multiple`
