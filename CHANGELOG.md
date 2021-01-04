@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Clarified how clients should treat extension properties with an invalid type
   or unspecified value
 
-## 0.2.0
+## 0.2.0 - 2021-01-04
 
 ### Added
 
