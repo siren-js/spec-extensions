@@ -2,6 +2,9 @@
 
 * [Introduction](#introduction)
   * [Conventions](#conventions)
+* [Link Extensions](#link-extensions)
+  * [`hreflang`](#hreflang)
+  * [`media`](#media)
 * [Field Extensions](#field-extensions)
   * [`value` Type and Format](#value-type-and-format)
   * [`value` Coercion](#value-coercion)
@@ -59,6 +62,39 @@ when, and only when, they appear in all capitals, as shown here.
 [BCP 14]: https://tools.ietf.org/html/bcp14
 [RFC2119]: https://tools.ietf.org/html/rfc2119
 [RFC8174]: https://tools.ietf.org/html/rfc8174
+
+## Link Extensions
+
+This section defines additional, OPTIONAL link members that correlate to
+[Section 3.4 of RFC 8288][rfc8288-3.4].
+
+[rfc8288-3.4]: https://tools.ietf.org/html/rfc8288#section-3.4
+
+```json
+{
+  "rel": ["profile"],
+  "href": "https://example.com/profile",
+  "type": "application/xhtml+xml",
+  "hreflang": "en",
+  "media": "screen"
+}
+```
+
+### `hreflang`
+
+A hint indicating the language of the linked resource, per the `hreflang` target
+attribute defined in [Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
+The value of this member MUST be a string or an array of strings, each
+representing the `Language-Tag`.
+
+[rfc8288-3.4.1]: https://tools.ietf.org/html/rfc8288#section-3.4.1
+
+### `media`
+
+Indicates the intended destination medium or media for style information, per
+the `media` target attribute defined in
+[Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
+The value of this member MUST be a string representing the `media-query-list`.
 
 ## Field Extensions
 
