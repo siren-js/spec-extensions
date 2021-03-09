@@ -65,9 +65,10 @@ when, and only when, they appear in all capitals, as shown here.
 
 ## Link Extensions
 
-This section defines additional, OPTIONAL link members that correlate to
-[Section 3.4 of RFC 8288][rfc8288-3.4].
+This section defines OPTIONAL extension members to [links][link] that correlate
+to [Section 3.4 of RFC 8288][rfc8288-3.4].
 
+[link]: https://github.com/kevinswiber/siren#links-1
 [rfc8288-3.4]: https://tools.ietf.org/html/rfc8288#section-3.4
 
 ```json
@@ -98,8 +99,7 @@ The value of this member MUST be a string representing the `media-query-list`.
 
 ## Field Extensions
 
-This section defines several extension properties to [fields]. Since these are
-extensions, their presence is OPTIONAL in Siren representations.
+This section defines several, OPTIONAL extension members to [fields].
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
 
