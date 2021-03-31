@@ -111,8 +111,8 @@ its `type` were `"text"`.
 
 ### `value` Type and Format
 
-The following table summarizes the RECOMMENDED [types][rfc8259-1] and format of
-a field's `value` property based on the field's `type`:
+The following table summarizes the RECOMMENDED [data type(s)][rfc8259-1] and
+format of a field's `value` property based on the field's `type`:
 
 [rfc8259-1]: https://tools.ietf.org/html/rfc8259#section-1
 
