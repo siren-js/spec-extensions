@@ -150,7 +150,7 @@ If a field's `value` is undefined (i.e., absent in the representation) or
 
 ### `checkbox` Fields
 
-This sections defines additional semantics for `checkbox` fields.
+This section defines additional semantics for `checkbox` fields.
 
 #### `checked`
 
