@@ -6,6 +6,7 @@
   * [`hreflang`](#hreflang)
   * [`media`](#media)
 * [Field Extensions](#field-extensions)
+  * [Unrecognized `type`](#unrecognized-type)
   * [`value` Type and Format](#value-type-and-format)
   * [`value` Coercion](#value-coercion)
   * [`checkbox` Fields](#checkbox-fields)
@@ -102,6 +103,11 @@ The value of this member MUST be a string representing the `media-query-list`.
 This section defines several, OPTIONAL extension members to [fields].
 
 [fields]: https://github.com/kevinswiber/siren#fields-1
+
+### Unrecognized `type`
+
+Clients that do not recognize a field's `type` SHOULD treat the field as though
+its `type` were `"text"`.
 
 ### `value` Type and Format
 
