@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Extensions for link objects: `hreflang` and `media`
 * How to treat unrecognized field `type`s
+* Action submission specification
 
 ### Changed
 
