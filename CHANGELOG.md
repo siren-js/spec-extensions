@@ -39,8 +39,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Added
 
-* Added recommendation for field `value`'s types and format based on field's
-  `type`.
+* Recommendation for field `value`'s types and format based on field's `type`
 * Defined how `null` or undefined field `value`s should be treated
 * Defined the `checked` property for `checkbox` fields
 * Defined a default value for `checkbox` fields' `value` property
@@ -62,13 +61,10 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 * Moved mention of `files` property for consistency
 * Renamed the section "HTML Input Attributes" to "Common Properties"
-
-### Fixed
-
 * Aligned type requirement for `multiple` `email` fields' `value` property with
   the HTML specification ([#2])
 * Clarified when `disabled` and `required` properties apply to fields
-* Clarified what `disabled` means for the field's `value`.
+* Clarified what `disabled` means for the field's `value`
 * Clarified requirements for `required` fields
 
 [#2]: https://github.com/dillonredding/siren-extensions/issues/2
