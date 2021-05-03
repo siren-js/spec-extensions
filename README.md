@@ -51,7 +51,7 @@
 
 This document defines various extensions to the core [Siren] specification.
 
-[Siren]: https://github.com/kevinswiber/siren
+[siren]: https://github.com/kevinswiber/siren
 
 ### Conventions
 
@@ -60,9 +60,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 document are to be interpreted as described in [BCP 14] [[RFC2119]] [[RFC8174]]
 when, and only when, they appear in all capitals, as shown here.
 
-[BCP 14]: https://tools.ietf.org/html/bcp14
-[RFC2119]: https://tools.ietf.org/html/rfc2119
-[RFC8174]: https://tools.ietf.org/html/rfc8174
+[bcp 14]: https://tools.ietf.org/html/bcp14
+[rfc2119]: https://tools.ietf.org/html/rfc2119
+[rfc8174]: https://tools.ietf.org/html/rfc8174
 
 ## Link Extensions
 
@@ -304,23 +304,23 @@ format of a field's `value` property based on the field's `type`:
 
 <!-- Note: datetime-local below uses a non-breaking hyphen  -->
 
-| Field&nbsp;`type` | Allowed&nbsp;`value`&nbsp;Types   | `value` Format
-|-------------------|-----------------------------------|--------
+| Field&nbsp;`type` | Allowed&nbsp;`value`&nbsp;Types   | `value` Format                                                                                                                                         |
+| ----------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `hidden`          | Boolean,&nbsp;Number,&nbsp;String |
 | `text`            | String                            |
 | `search`          | String                            |
-| `url`             | String                            | The empty string or a [valid][valid-url] [absolute URL][abs-url] |
+| `url`             | String                            | The empty string or a [valid][valid-url] [absolute URL][abs-url]                                                                                       |
 | `tel`             | String                            |
-| `email`           | String                            | The empty string, or a [valid email address list][valid-emails], if [`multiple`](#multiple) is `true`; otherwise, a [valid email address][valid-email]
+| `email`           | String                            | The empty string, or a [valid email address list][valid-emails], if [`multiple`](#multiple) is `true`; otherwise, a [valid email address][valid-email] |
 | `password`        | String                            |
-| `date`            | String                            | The empty string or a [valid date string][valid-date]
-| `month`           | String                            | The empty string or a [valid month string][valid-month]
-| `week`            | String                            | The empty string or a [valid week string][valid-week]
-| `time`            | String                            | The empty string or a [valid time string][valid-time]
-| `datetime‑local`  | String                            | The empty string or a [valid local date and time string][valid-datetime]
-| `number`          | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string
-| `range`           | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string
-| `color`           | String                            | A [valid simple color][valid-color]
+| `date`            | String                            | The empty string or a [valid date string][valid-date]                                                                                                  |
+| `month`           | String                            | The empty string or a [valid month string][valid-month]                                                                                                |
+| `week`            | String                            | The empty string or a [valid week string][valid-week]                                                                                                  |
+| `time`            | String                            | The empty string or a [valid time string][valid-time]                                                                                                  |
+| `datetime‑local`  | String                            | The empty string or a [valid local date and time string][valid-datetime]                                                                               |
+| `number`          | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string                                                                                  |
+| `range`           | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string                                                                                  |
+| `color`           | String                            | A [valid simple color][valid-color]                                                                                                                    |
 | `checkbox`        | Boolean, Number, String           |
 
 [abs-url]: https://url.spec.whatwg.org/#syntax-url-absolute
@@ -372,16 +372,16 @@ be accepted.
 This property is OPTIONAL and its value MUST be an array whose elements MUST be
 an ASCII case-insensitive match for one of the following:
 
-* The string `"audio/*"`
-  * Indicates that sound files are accepted
-* The string `"video/*"`
-  * Indicates that video files are accepted
-* The string `"image/*"`
-  * Indicates that image files are accepted
-* A [valid MIME type string with no parameters][vmtswnp]
-  * Indicates that files of the specified type are accepted
-* A string whose first character is a U+002E FULL STOP character (.)
-  * Indicates that files with the specified file extension are accepted
+- The string `"audio/*"`
+  - Indicates that sound files are accepted
+- The string `"video/*"`
+  - Indicates that video files are accepted
+- The string `"image/*"`
+  - Indicates that image files are accepted
+- A [valid MIME type string with no parameters][vmtswnp]
+  - Indicates that files of the specified type are accepted
+- A string whose first character is a U+002E FULL STOP character (.)
+  - Indicates that files with the specified file extension are accepted
 
 [vmtswnp]: https://mimesniff.spec.whatwg.org/#valid-mime-type-with-no-parameters
 
@@ -701,18 +701,18 @@ The following table summarizes where a property is applicable based on a field's
 `type`:
 
 |               | `text`, `search` | `url`, `tel` | `email` | `password` | `date`, `month`, `week`, `time`, `datetime-local` | `number` | `range` | `checkbox`, `radio` | `file`  | `select` | `textarea` |
-|---------------|:----------------:|:------------:|:-------:|:----------:|:-------------------------------------------------:|:--------:|:-------:|:-------------------:|:-------:|:--------:|:----------:|
-| `dirname`     | &check;          |              |         |            |                                                   |          |         |                     |         |          | &check;    |
-| `disabled`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  | &check; | &check;             | &check; | &check;  | &check;    |
-| `max`         |                  |              |         |            | &check;                                           | &check;  | &check; |                     |         |          |            |
-| `maxlength`   | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          | &check;    |
-| `min`         |                  |              |         |            | &check;                                           | &check;  | &check; |                     |         |          |            |
-| `minlength`   | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          | &check;    |
+| ------------- | :--------------: | :----------: | :-----: | :--------: | :-----------------------------------------------: | :------: | :-----: | :-----------------: | :-----: | :------: | :--------: |
+| `dirname`     |     &check;      |              |         |            |                                                   |          |         |                     |         |          |  &check;   |
+| `disabled`    |     &check;      |   &check;    | &check; |  &check;   |                      &check;                      | &check;  | &check; |       &check;       | &check; | &check;  |  &check;   |
+| `max`         |                  |              |         |            |                      &check;                      | &check;  | &check; |                     |         |          |            |
+| `maxlength`   |     &check;      |   &check;    | &check; |  &check;   |                                                   |          |         |                     |         |          |  &check;   |
+| `min`         |                  |              |         |            |                      &check;                      | &check;  | &check; |                     |         |          |            |
+| `minlength`   |     &check;      |   &check;    | &check; |  &check;   |                                                   |          |         |                     |         |          |  &check;   |
 | `multiple`    |                  |              | &check; |            |                                                   |          |         |                     | &check; | &check;  |            |
-| `pattern`     | &check;          | &check;      | &check; | &check;    |                                                   |          |         |                     |         |          |            |
-| `placeholder` | &check;          | &check;      | &check; | &check;    |                                                   | &check;  |         |                     |         |          | &check;    |
-| `readonly`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  |         |                     |         |          | &check;    |
-| `required`    | &check;          | &check;      | &check; | &check;    | &check;                                           | &check;  |         | &check;             | &check; | &check;  | &check;    |
+| `pattern`     |     &check;      |   &check;    | &check; |  &check;   |                                                   |          |         |                     |         |          |            |
+| `placeholder` |     &check;      |   &check;    | &check; |  &check;   |                                                   | &check;  |         |                     |         |          |  &check;   |
+| `readonly`    |     &check;      |   &check;    | &check; |  &check;   |                      &check;                      | &check;  |         |                     |         |          |  &check;   |
+| `required`    |     &check;      |   &check;    | &check; |  &check;   |                      &check;                      | &check;  |         |       &check;       | &check; | &check;  |  &check;   |
 
 #### `dirname`
 
