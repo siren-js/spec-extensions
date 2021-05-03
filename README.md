@@ -66,10 +66,10 @@ when, and only when, they appear in all capitals, as shown here.
 
 ## Link Extensions
 
-This section defines OPTIONAL extension members to [links][link] that correlate
-to [Section 3.4 of RFC 8288][rfc8288-3.4].
+This section defines OPTIONAL extension members for [links] that correlate to
+[Section 3.4 of RFC 8288][rfc8288-3.4].
 
-[link]: https://github.com/kevinswiber/siren#links-1
+[links]: https://github.com/kevinswiber/siren#links-1
 [rfc8288-3.4]: https://tools.ietf.org/html/rfc8288#section-3.4
 
 ```json
@@ -135,8 +135,8 @@ Host: example.com
 ```
 
 Since the `method` member was omitted, `GET` is used. The `type` member was also
-omitted but is always assumed to be `application/x-www-form-urlencoded` for
-`GET` actions.
+omitted, but `application/x-www-form-urlencoded` is always used for `GET`
+actions.
 
 If the `method` were explicityly `POST`, then the request will instead look as
 follows:
@@ -267,8 +267,8 @@ follows. It is adapted from HTML's algorithm for
       - `"file"` (see [`file` Fields](#file-fields))
         1. If `field.files` is either not an array or empty, then
            [append an entry][aae] to `entryList` with `name` and a new
-           [`File`][file] object with an empty name, `application/octet-stream` as
-           type, and an empty body.
+           [`File`][file] object with an empty name, `application/octet-stream`
+           as type, and an empty body.
         1. Otherwise, for each [file] `file` in `field.files`,
            [append an entry][aae] to `entryList` with `name` and `file`.
       - `"textarea"` (see [`textarea` Fields](#textarea-fields))
