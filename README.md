@@ -849,7 +849,7 @@ string nor a [valid week string][valid-week], the field is
 ### Common Properties
 
 This section defines properties common to several types of fields.
-These properties are based on HTML's [common input attributes][input-attrs].
+These properties are adapted from HTML's [common input attributes][input-attrs].
 
 [input-attrs]: https://html.spec.whatwg.org/multipage/input.html#input-type-attr-summary
 
