@@ -2,9 +2,6 @@
 
 - [Introduction](#introduction)
   - [Conventions](#conventions)
-- [Link Extensions](#link-extensions)
-  - [`hreflang`](#hreflang)
-  - [`media`](#media)
 - [Action Submission](#action-submission)
   - [Overview](#overview)
   - [Action Submission Algorithm](#action-submission-algorithm)
@@ -66,6 +63,9 @@
     - [`readonly`](#readonly)
     - [`required`](#required)
     - [`step`](#step)
+- [Link Extensions](#link-extensions)
+  - [`hreflang`](#hreflang)
+  - [`media`](#media)
 
 ## Introduction
 
@@ -83,40 +83,6 @@ when, and only when, they appear in all capitals, as shown here.
 [bcp 14]: https://tools.ietf.org/html/bcp14
 [rfc2119]: https://tools.ietf.org/html/rfc2119
 [rfc8174]: https://tools.ietf.org/html/rfc8174
-
-## Link Extensions
-
-This section defines OPTIONAL extension members for [links] that correlate to
-[Section 3.4 of RFC 8288][rfc8288-3.4].
-
-[links]: https://github.com/kevinswiber/siren#links-1
-[rfc8288-3.4]: https://tools.ietf.org/html/rfc8288#section-3.4
-
-```json
-{
-  "rel": ["profile"],
-  "href": "https://example.com/profile",
-  "type": "application/xhtml+xml",
-  "hreflang": "en",
-  "media": "screen"
-}
-```
-
-### `hreflang`
-
-A hint indicating the language of the linked resource, per the `hreflang` target
-attribute defined in [Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
-The value of this member MUST be a string or an array of strings, each
-representing the `Language-Tag`.
-
-[rfc8288-3.4.1]: https://tools.ietf.org/html/rfc8288#section-3.4.1
-
-### `media`
-
-Indicates the intended destination medium or media for style information, per
-the `media` target attribute defined in
-[Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
-The value of this member MUST be a string representing the `media-query-list`.
 
 ## Action Submission
 
@@ -1141,3 +1107,37 @@ result of applying the [algorithm to convert a string to a number](#algorithm-to
 to the string given by the field's `value` is a number, and that number
 subtracted from the step base is not an integral multiple of the allowed value
 step, the element is [suffering from a step mismatch](#validity-states).
+
+## Link Extensions
+
+This section defines OPTIONAL extension members for [links] that correlate to
+[Section 3.4 of RFC 8288][rfc8288-3.4].
+
+[links]: https://github.com/kevinswiber/siren#links-1
+[rfc8288-3.4]: https://tools.ietf.org/html/rfc8288#section-3.4
+
+```json
+{
+  "rel": ["profile"],
+  "href": "https://example.com/profile",
+  "type": "application/xhtml+xml",
+  "hreflang": "en",
+  "media": "screen"
+}
+```
+
+### `hreflang`
+
+A hint indicating the language of the linked resource, per the `hreflang` target
+attribute defined in [Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
+The value of this member MUST be a string or an array of strings, each
+representing the `Language-Tag`.
+
+[rfc8288-3.4.1]: https://tools.ietf.org/html/rfc8288#section-3.4.1
+
+### `media`
+
+Indicates the intended destination medium or media for style information, per
+the `media` target attribute defined in
+[Section 3.4.1 or RFC 8288][rfc8288-3.4.1].
+The value of this member MUST be a string representing the `media-query-list`.
