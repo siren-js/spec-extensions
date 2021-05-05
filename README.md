@@ -284,6 +284,81 @@ follows. It is adapted from HTML's algorithm for
 [list]: https://infra.spec.whatwg.org/#list
 [truthy]: https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 
+## Constraints
+
+### Definitions
+
+A [field][fields] is a **candidate for constraint validation** except when a
+condition has **barred the field from constraint validation**. (For example, a
+field is barred from constraint validation if it is disabled.)
+
+A [field][fields] **satisfies its constraints** if it is not suffering from any
+of the below [validity states](#validity-states).
+
+#### Validity States
+
+A field can be constrained in various ways. The following is the list of
+**validity states** that a field can be in, making the field invalid for the
+purposes of [constraint validation](#constraint-validation). (The definitions
+below are non-normative; other parts of this specification define more precisely
+when each state applies or does not.)
+
+- **Suffering from being missing**
+  - When a field is [`required`](#required) but has no `value`; or, more
+    complicated rules for [`checkbox` fields](#radio-fields),
+    [`file` fields](#radio-fields), [`radio` fields](#radio-fields), and
+    [`select` fields](#select-fields).
+- **Suffering from a type mismatch**
+  - When a field that allows arbitrary user input has a value that is not in the
+    correct syntax.
+- **Suffering from a pattern mismatch**
+  - When a field has a value that doesn't satisfy the [`pattern`](#pattern)
+    member.
+- **Suffering from being too long**
+  - When a field has a value that is too long for the field's
+    [`maxlength`](#maxlength-and-minlength) member.
+- **Suffering from being too short**
+  - When a field has a value that is too short for the field's
+    [`minlength`](#maxlength-and-minlength) member.
+- **Suffering from an underflow**
+  - When a field has a value that is not the empty string and is too low for the
+    [`min`](#min-and-max) member.
+- **Suffering from an overflow**
+  - When a field has a value that is not the empty string and is too high for
+    the [`max`](#min-and-max) member.
+- **Suffering from a step mismatch**
+  - When a field has a value that doesn't fit the rules given by the
+    [`step`](#step) member.
+- **Suffering from bad input**
+  - When a field has incomplete input and the user agent does not think the user
+    ought to be able to [submit the action](#action-submission) in its current
+    state.
+- **Suffering from a custom error**
+  - When a field's custom validity error message is not the empty string.
+
+### Constraint Validation
+
+The algorithm for validating an [action]'s constraints is as follows. It is
+adapted from HTML's algorithm for [statically validating constraints][svtc].
+
+[svtc]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#statically-validate-the-constraints
+
+When the user agent is required to validate the constraints of an [action]
+`action`, it must run the following steps, which return either a positive result
+(all the [fields] in the action are valid) or a negative result (there are invalid
+fields) along with a (possibly empty) list of fields that are invalid:
+
+1. Let `invalidControls` be an initially empty list of fields.
+1. For each element `field` in `action.fields`, in order:
+   1. If field is not a [candidate for constraint validation](#definitions),
+      then continue.
+   1. Otherwise, if `field` [satisfies its constraints](#definitions), then
+      continue.
+   1. Otherwise, add `field` to `invalidControls`.
+1. If `invalidControls` is empty, then return a positive result.
+1. Otherwise, return a negative result with the list of fields in the
+   `invalidControls` list.
+
 ## Field Extensions
 
 This section defines several, OPTIONAL extension members to [fields].
@@ -295,45 +370,31 @@ This section defines several, OPTIONAL extension members to [fields].
 Clients that do not recognize a field's `type` SHOULD treat the field as though
 its `type` were `"text"`.
 
-### `value` Type and Format
+### `value` Type
 
-The following table summarizes the RECOMMENDED [data type(s)][rfc8259-1] and
-format of a field's `value` property based on the field's `type`:
+The following table summarizes the RECOMMENDED [data type(s)][rfc8259-1] of a
+field's `value` property based on the field's `type`:
 
 [rfc8259-1]: https://tools.ietf.org/html/rfc8259#section-1
 
-<!-- Note: datetime-local below uses a non-breaking hyphen  -->
-
-| Field&nbsp;`type` | Allowed&nbsp;`value`&nbsp;Types   | `value` Format                                                                                                                                         |
-| ----------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `hidden`          | Boolean,&nbsp;Number,&nbsp;String |
-| `text`            | String                            |
-| `search`          | String                            |
-| `url`             | String                            | The empty string or a [valid][valid-url] [absolute URL][abs-url]                                                                                       |
-| `tel`             | String                            |
-| `email`           | String                            | The empty string, or a [valid email address list][valid-emails], if [`multiple`](#multiple) is `true`; otherwise, a [valid email address][valid-email] |
-| `password`        | String                            |
-| `date`            | String                            | The empty string or a [valid date string][valid-date]                                                                                                  |
-| `month`           | String                            | The empty string or a [valid month string][valid-month]                                                                                                |
-| `week`            | String                            | The empty string or a [valid week string][valid-week]                                                                                                  |
-| `time`            | String                            | The empty string or a [valid time string][valid-time]                                                                                                  |
-| `datetime‑local`  | String                            | The empty string or a [valid local date and time string][valid-datetime]                                                                               |
-| `number`          | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string                                                                                  |
-| `range`           | Number, String                    | A [valid floating-point number][valid-number], if `value` is a string                                                                                  |
-| `color`           | String                            | A [valid simple color][valid-color]                                                                                                                    |
-| `checkbox`        | Boolean, Number, String           |
-
-[abs-url]: https://url.spec.whatwg.org/#syntax-url-absolute
-[valid-color]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-simple-colour
-[valid-date]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-[valid-datetime]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-local-date-and-time-string
-[valid-email]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
-[valid-emails]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address-list
-[valid-month]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-month-string
-[valid-number]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-floating-point-number
-[valid-time]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-time-string
-[valid-url]: https://url.spec.whatwg.org/#valid-url-string
-[valid-week]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-week-string
+| Field `type`     | Allowed `value` Types   |
+| ---------------- | ----------------------- |
+| `hidden`         | Boolean, Number, String |
+| `text`           | String                  |
+| `search`         | String                  |
+| `url`            | String                  |
+| `tel`            | String                  |
+| `email`          | String                  |
+| `password`       | String                  |
+| `date`           | String                  |
+| `month`          | String                  |
+| `week`           | String                  |
+| `time`           | String                  |
+| `datetime-local` | String                  |
+| `number`         | Number, String          |
+| `range`          | Number, String          |
+| `color`          | String                  |
+| `checkbox`       | Boolean, Number, String |
 
 ### `value` Coercion
 
@@ -346,19 +407,56 @@ This section defines additional semantics for `checkbox` fields.
 
 #### `checked`
 
-The `checked` property of a `checkbox` field refers to the [checkedness] of the
-checkbox.
-This property is OPTIONAL, it MUST be a boolean, and it defaults to `false`.
+Indicates whether the field is checked. When it is checked, the field is
+included during [action submission](#action-submission). This property is
+OPTIONAL, it MUST be a boolean, and it defaults to `false`.
 
-[checkedness]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-checked
+**Constraint validation:** If the field is [required](#required) and its
+`checked` property is [falsy], then the field is
+[suffering from being missing](#validity-states).
 
 #### `value`
 
-The default value for a `checkbox` field's `value` property is `"on"`, which is
-in accordance with the HTML specification (see step 5.7 of the algorithm for
-[constructing the entry list][ctel] during form submission).
+The value sent to the server on [action submission](#action-submission). The
+default value is `"on"`.
 
-[ctel]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#constructing-form-data-set
+### `color` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid lowercase simple color][valid-color], the field is
+[suffering from a type mismatch](#validity-states).
+
+[valid-color]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-simple-colour
+
+### `date` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid date string][valid-date], the field is
+[suffering from a type mismatch](#validity-states).
+
+[valid-date]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+
+### `datetime-local` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid normalized local date and time string][valid-datetime], the
+field is [suffering from a type mismatch](#validity-states).
+
+[valid-datetime]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-local-date-and-time-string
+
+### `email` Fields
+
+- When the field's `multiple` property is [falsy]
+  - **Constraint validation:** While the `value` of the field is neither the
+    empty string nor a single [valid email address][valid-email], the field is
+    [suffering from a type mismatch](#validity-states).
+- When the field's `multiple` property is [truthy]
+  - **Constraint validation:** While the `value` of the field is not a
+    [valid email address list][valid-emails], the field is
+    [suffering from a type mismatch](#validity-states).
+
+[valid-email]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+[valid-emails]: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address-list
 
 ### `file` Fields
 
@@ -422,11 +520,39 @@ The following example shows how to represent the example
 
 #### `files`
 
-Intended for use by clients to keep track of [selected files][selected-files].
-This property MUST be an array of [`File` objects][file].
+The list of selected files, each file consisting of a filename, a file type, and
+a file body (the contents of the file). Intended for use by clients to keep
+track of selected files. This property is OPTIONAL and MUST be an array of
+[`File`][file] objects.
 
 [file]: https://w3c.github.io/FileAPI/#dfn-file
-[selected-files]: https://html.spec.whatwg.org/multipage/input.html#concept-input-type-file-selected
+
+**Constraint validation:** If the field is [required](#required) and its `files`
+property is not a non-empty array of [`File`][file] objects, then the field is
+[suffering from being missing](#validity-states).
+
+### `hidden` Fields
+
+**Constraint validation:** The field is
+[barred from constraint validation](#definitions).
+
+### `month` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid month string][valid-month], the field is
+[suffering from a type mismatch](#validity-states).
+
+[valid-month]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-month-string
+
+### `number` and `range` Fields
+
+**Constraint validation:** While the `value` of the field is not the empty
+string, a [valid floating-point number][valid-number], nor a
+[JSON number][rfc8259-6], the field is
+[suffering from a type mismatch](#validity-states).
+
+[rfc8259-6]: https://tools.ietf.org/html/rfc8259#section-6
+[valid-number]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-floating-point-number
 
 ### `radio` Fields
 
@@ -449,10 +575,13 @@ The `group` property allows for specifying several radio buttons with the same
 This property MUST be an array of [radio object](#radio-object)s.
 This property applies only to fields whose `type` is `radio`.
 Clients SHOULD ignore this property when present on any other type of field.
+Two or more radio objects in the same group MUST NOT be [checked](#checked-1) at
+a given time.
 
-When the `radio` field is [required](#required), one of the radio objects MUST
-be [checked](#checked-1) in the `group` array.
-Two or more radio objects in the same group MUST NOT be checked at a given time.
+**Constraint validation:** If the field is [required](#required) and its
+[`group`](#group) property does not contain an element whose
+[`checked`](#checked-1) property is [truthy], then the field is
+[suffering from being missing](#validity-states).
 
 The following example shows how to represent the [radio buttons][rb] from the
 example in the HTML specification.
@@ -528,10 +657,12 @@ Clients SHOULD ignore this property when present on any other type of field.
 
 [opt-list]: https://html.spec.whatwg.org/multipage/form-elements.html#concept-select-option-list
 
-When the `select` field is [required](#required), at least one of the option
-objects MUST be [selected](#selected) in the `options` array.
-Multiple options can be selected if the field allows
-[multiple](#multiple) values.
+If the field is [required](#required) and its [`options`](#options) member does
+not contain an element whose [`selected`](#selected) member is [truthy], then
+the field is [suffering from being missing](#validity-states).
+
+Multiple options can be selected if the field allows [multiple](#multiple)
+values.
 
 Here's an example representing the first example [`select` element][select] from
 the HTML specification.
@@ -689,6 +820,31 @@ RETURN U+000A LINE FEED (CRLF) character pairs.
 
 If the `wrap` property is missing or is neither of the string `soft` nor `hard`,
 then the default value is `soft`.
+
+### `time` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid time string][valid-time], the field is
+[suffering from a type mismatch](#validity-states).
+
+[valid-time]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-time-string
+
+### `url` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid][valid-url] [absolute URL][abs-url], the field is
+[suffering from a type mismatch](#validity-states).
+
+[abs-url]: https://url.spec.whatwg.org/#syntax-url-absolute
+[valid-url]: https://url.spec.whatwg.org/#valid-url-string
+
+### `week` Fields
+
+**Constraint validation:** While the `value` of the field is neither the empty
+string nor a [valid week string][valid-week], the field is
+[suffering from a type mismatch](#validity-states).
+
+[valid-week]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-week-string
 
 ### Common Properties
 
