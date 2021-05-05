@@ -65,6 +65,7 @@
     - [`placeholder`](#placeholder)
     - [`readonly`](#readonly)
     - [`required`](#required)
+    - [`step`](#step)
 
 ## Introduction
 
@@ -911,6 +912,7 @@ The following table summarizes where a property is applicable based on a field's
 | `placeholder` |     &check;      |   &check;    | &check; |  &check;   |                                                   | &check;  |         |                     |         |          |  &check;   |
 | `readonly`    |     &check;      |   &check;    | &check; |  &check;   |                      &check;                      | &check;  |         |                     |         |          |  &check;   |
 | `required`    |     &check;      |   &check;    | &check; |  &check;   |                      &check;                      | &check;  |         |       &check;       | &check; | &check;  |  &check;   |
+| `step`        |                  |              |         |            |                      &check;                      | &check;  | &check; |                     |         |          |            |
 
 #### `dirname`
 
@@ -1086,3 +1088,56 @@ required.
 of `checkbox`, `file`, `radio`, or `select`, and the `value` member is undefined,
 `null`, or the empty string, then the field is
 [suffering from being missing](#validity-states).
+
+#### `step`
+
+Indicates the granularity that is expected (and required) of the field's
+`value`, by limiting the allowed values. This property MUST be a
+[valid floating-point number][valid-number].
+
+Based on a field's `type`, it will have a **default step**, a
+**step scale factor**, and in some cases a **default step base**, which are used
+in processing the property as described below. The values for each of these
+attributes match those defined in HTML; however, the following table summarizes
+these for your convenience:
+
+| Field `type`     | Default Step | Step Scale Factor | Default Step Base |
+| ---------------- | ------------ | ----------------- | ----------------- |
+| `date`           | 1            | 86,400,000        |                   |
+| `month`          | 1            | 1                 |                   |
+| `week`           | 1            | 604,800,000       | -259,200,000      |
+| `time`           | 60           | 1,000             |                   |
+| `datetime-local` | 60           | 1,000             |                   |
+| `number`         | 1            | 1                 |                   |
+| `range`          | 1            | 1                 |                   |
+
+The `step` property provides the **allowed value step** for the field, as
+follows:
+
+1. If the property does not apply, then there is no allowed value step.
+1. Otherwise, if the property is absent, then the allowed value step is the
+   default step multiplied by the step scale factor.
+1. Otherwise, if the property's value is not a
+   [valid floating-point number][valid-number], or is a number less than zero,
+   then the allowed value step is the default step multiplied by the step scale
+   factor.
+1. Otherwise, the allowed value step is the property's value, multiplied by the
+   step scale factor.
+
+The **step base** is the value returned by the following algorithm:
+
+1. If the field has a [`min`](#min-and-max) member, and the result of applying
+   the [algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+   to the value of `min` is not an error, then return that result.
+1. If the field has a `value` member, and the result of applying the
+   [algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+   to the value of `value` is not an error, then return that result.
+1. If a default step base is defined for this field given its `type`, then
+   return it.
+1. Return zero.
+
+**Constraint validation:** When the field has an allowed value step, and the
+result of applying the [algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the string given by the field's `value` is a number, and that number
+subtracted from the step base is not an integral multiple of the allowed value
+step, the element is [suffering from a step mismatch](#validity-states).
