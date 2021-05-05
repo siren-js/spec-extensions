@@ -10,30 +10,35 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ## Unreleased
 
-### Added
-
-* Defined common `step` property for fields
-
-### Fixed
-
-* Clarified how clients should treat extension properties with an invalid type
-  or unspecified value
-
 ## 0.3.0
 
 ### Added
 
-* Extensions for link objects: `hreflang` and `media`
-* How to treat unrecognized field `type`s
 * Action submission specification
+* Action constraint validation specification
+* How to treat unrecognized field `type`s
+* Constraints for fields
+* How to apply the `pattern` property
+* Common `step` property for fields
+* Extensions for link objects: `hreflang` and `media`
 
 ### Changed
 
-* Clarified "type" as "data type" in recommendedation of fields' `value`'s type.
+* Clarified "type" as "data type" in recommendedation of fields' `value`'s type
+* Several field extension and common property descriptions to align with
+  constraint validation
+* Clarified adaptation of the HTML specification
 
 ### Fixed
 
 * Typo in "`checkbox` Fields" section
+
+### Removed
+
+* Column for specifying valid `value` formats; this is covered by constraint
+  validation
+* Mentions of HTML's checkedness concept
+* Unnecessary use of the term "element" in the Placeholder Label Option seciton
 
 ## 0.2.0 - 2021-01-04
 
