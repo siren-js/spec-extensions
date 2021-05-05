@@ -726,7 +726,7 @@ option object's `optgroup` property is undefined, then that option is the
 
 If a `select` field is [required](#required), does not allow
 [multiple](#multiple) selections, and has a [`size`](#size) of 1, then the
-`select` field element MUST have a placeholder label option.
+`select` field MUST have a placeholder label option.
 
 The following example represents the second example [`select` element][select]
 from the HTML specification, which contains a placeholder label option.
