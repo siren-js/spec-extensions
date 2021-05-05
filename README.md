@@ -396,6 +396,29 @@ field's `value` property based on the field's `type`:
 | `color`          | String                  |
 | `checkbox`       | Boolean, Number, String |
 
+### Algorithm to Convert a String to a Number
+
+The following field `type`s define an algorithm to convert a string to a number
+that match's HTML's [algorithm to convert a string to a number][atcastan]:
+
+[atcastan]: https://html.spec.whatwg.org/multipage/input.html#concept-input-value-string-number
+
+- [`date`][atcastan-date]
+- [`month`][atcastan-month]
+- [`week`][atcastan-week]
+- [`time`][atcastan-time]
+- [`datetime-local`][atcastan-datetime-local]
+- [`number`][atcastan-number], if `value` is a string
+- [`range`][atcastan-range], if `value` is a string
+
+[atcastan-date]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-month]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-week]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-time]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-datetime-local]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-number]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+[atcastan-range]: https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date):concept-input-value-string-number
+
 ### `value` Coercion
 
 If a field's `value` is undefined (i.e., absent in the representation) or
@@ -883,49 +906,135 @@ This property MUST be a non-empty string.
 
 #### `disabled`
 
-Indicates that the field is [disabled], meaning its value cannot be mutated and
-it is barred from constraint validation.
-This property MUST be a boolean and it defaults to `false`.
-When `true`, the field's `value` is immutable and barred from constraint
-validation.
+Indicates whether the field is **disabled**, meaning it is not included during
+[action submission](#action-submission) and its `value` cannot be mutated.
+This member MUST be a boolean and it defaults to `false`.
+If this member is [truthy], the field is considered disabled.
 
-[disabled]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#concept-fe-disabled
+> Note that the [`disabled`](#disabled) member for
+> [radio objects](#radio-object) and the [`disabled`](#disabled-1) member for
+> [option objects](#option-object) are defined separately.
 
-#### `min` and `max`
-
-Indicate the allowed range of values for a field.
-These properties SHOULD align with the type and format of the field's `value`
-(see [`value` Type and Format](#value-type-and-format)).
-These properties apply to fields whose `type` is `date`, `month`, `week`,
-`time`, `datetime-local`, `number`, or `range`.
-`range` fields have a default `min` value of `0` and a default `max` value of
-`100`.
+**Constraint validation:** If a field is disabled, it is
+[barred from constraint validation](#definitions).
 
 #### `maxlength` and `minlength`
 
-Declare inclusive upper (`maxlength`) or lower (`minlength`) bounds on the
+Declares inclusive upper (`maxlength`) or lower (`minlength`) bounds on the
 number of characters in a field's `value`.
 These properties MUST be either a number or a string representing a
-[valid floating-point number][valid-number].
+[valid non-negative ingeger][valid-non-negative-int].
+
+[valid-non-negative-int]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-non-negative-integer
+
+**Constraint validation:** If a field's `maxlength` is specified and the length
+of the field's `value` is greater than `maxlength`, then the field is
+[suffering from being too long](#validity-states).
+
+**Constraint validation:** If a field's `minlength` is specified and the length
+of the field's `value` is less than `minlength`, then the field is
+[suffering from being too short](#validity-states).
+
+#### `min` and `max`
+
+Indicate the allowed range of values for a field. The data type of the `min` and
+`max` properties' value MUST be an allowed
+[data type of the field's `value`](#value-type).
+
+For `range` fields, the default `min` is `0` and the default `max` is `100`.
+
+If the field has a `min` property, and the result of applying the
+[algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the value of the `min` property is a number, then that number is the field's
+**minimum**; otherwise, if the field defines a **default minimum** for its
+`type`, then that is the minimum; otherwise, the field has no minimum.
+
+If the field has a `max` property, and the result of applying the
+[algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the value of the `max` property is a number, then that number is the field's
+**maximum**; otherwise, if the field defines a **default maximum** for its
+`type`, then that is the maximum; otherwise, the field has no minimum.
+
+A field **has a reversed range** if its maximum is less than its minimum.
+
+**Constraint validation:** When the field has a minimum and does not have a
+reversed range, and the result of applying the
+[algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the string given by the field's `value` is a number, and the number obtained
+from that algorithm is less than the minimum, the field is
+[suffering from an underflow](#validity-states).
+
+**Constraint validation:** When the field has a maximum and does not have a
+reversed range, and the result of applying the
+[algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the string given by the field's `value` is a number, and the number obtained
+from that algorithm is more than the maximum, the field is
+[suffering from an overflow](#validity-states).
+
+**Constraint validation:** When a field has a reversed range, and the result of
+applying the
+[algorithm to convert a string to a number](#algorithm-to-convert-a-string-to-a-number)
+to the string given by the fields's `value` is a number, and the number obtained
+from that algorithm is more than the maximum and less than the minimum, the
+field is simultaneously [suffering from an underflow](#validity-states) and
+[suffering from an overflow](#validity-states).
 
 #### `multiple`
 
 Indicates whether the client is allowed to specify more than one value.
 This property MUST be a boolean and it defaults to `false`.
 
-When `multiple` is `true` and `type` is `email`, the field's `value` is a string
+For `email` fields, when `multiple` is `true`, the field's `value` is a string
 containing a list of comma-separated email addresses.
 
 #### `pattern`
 
 Specifies a regular expression against which the field's `value` is to be
 checked.
-When [`multiple`](#multiple) is `true`, each individual value is to be checked
-against the pattern.
 This property MUST be a string representing a valid
-[regular expression][regexp].
+[regular expression][regexp-syntax].
 
-[regexp]: https://tc39.es/ecma262/#prod-Pattern
+[regexp-syntax]: https://tc39.es/ecma262/#prod-Pattern
+
+The **compiled pattern regular expression** of a field, if it exists, is a
+JavaScript [RegExp] (or equivalent) object. It is determined as follows:
+
+[regexp]: https://tc39.es/ecma262/#sec-regexp-regular-expression-objects
+
+1. If the field does not have a `pattern` specified, then return nothing.
+   The field has no compiled pattern regular expression.
+1. Let `pattern` be the value of the `pattern` property of the field.
+1. Let `regexpCompletion` be [RegExpCreate](`pattern`, `"u"`).
+1. If `regexpCompletion` is an [abrupt completion][regexp-abrubt], then return
+   nothing. The field has no compiled pattern regular expression.
+   > User agents are encouraged to log this error in a developer console, to aid
+   > debugging.
+1. Let `anchoredPattern` be the string `"^(?:"`, followed by `pattern`, followed
+   by `")$"`.
+1. Return ! [RegExpCreate](`anchoredPattern`, `"u"`).
+
+[regexpcreate]: https://tc39.es/ecma262/#sec-regexpcreate
+[regexp-abrubt]: https://tc39.es/ecma262/#sec-completion-record-specification-type
+
+> The reasoning behind these steps, instead of just using the value of the
+> pattern attribute directly, is twofold. First, we want to ensure that when
+> matched against a string, the regular expression's start is anchored to the
+> start of the string and its end to the end of the string. Second, we want to
+> ensure that the regular expression is valid in standalone form, instead of
+> only becoming valid after being surrounded by the `"^(?:"` and `")$"` anchors.
+
+**Constraint validation:** If the field's `value` is not the empty string, and
+either the field's [`multiple`](#multiple) property is not specified or it does
+not apply to the field given its `type`, and the field has a compiled pattern
+regular expression but that regular expression does not match the field's
+`value`, then the field is
+[suffering from a pattern mismatch](#validity-states).
+
+**Constraint validation:** If the field's `value` is not the empty string, and
+the field's [multiple](#multiple) property is specified and applies to the
+field, and the field has a compiled pattern regular expression but that
+regular expression does not match each of the field's values, then the field
+is [suffering from a pattern mismatch](#validity-states).
 
 #### `placeholder`
 
@@ -940,16 +1049,21 @@ U+000D CARRIAGE RETURN (CR) characters.
 
 #### `readonly`
 
-Indicates whether or not the field can be edited.
-This property MUST be a boolean and it defaults to `false`.
-When `true`, the field's `value` is immutable and barred from constraint
-validation.
+Indicates whether the field is **readonly**, meaning its `value` cannot be
+mutated. This member MUST be a boolean and it defaults to `false`. If this
+member is [truthy], the field is considered read-only.
+
+**Constraint validation:** If a field is read-only, it is
+[barred from constraint validation](#definitions).
 
 #### `required`
 
-Indicates that the field is required, meaning the value submitted to the server
-MUST NOT be the empty string (see [`value` Coercion](#value-coercion)).
-With the exception of [`radio` fields](#radio-fields) and
-[`select` fields](#select-fields), the value submitted to the server is the
-value of the `value` property.
-This property MUST be a boolean and it defaults to `false`.
+Indicates whether the field is **required**, meaning is must be included during
+[action submission](#action-submission). This member MUST be a boolean and
+it defaults to `false`. If this member is [truthy], the field is considered
+required.
+
+**Constraint validation:** If the field is required, the `type` member is none
+of `checkbox`, `file`, `radio`, or `select`, and the `value` member is undefined,
+`null`, or the empty string, then the field is
+[suffering from being missing](#validity-states).
