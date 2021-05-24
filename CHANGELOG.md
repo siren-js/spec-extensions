@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * How to apply the `pattern` property
 * Common `step` property for fields
 * Extensions for link objects: `hreflang` and `media`
+* `FileList` as an acceptable type for a `file` field's `files` property
 
 ### Changed
 

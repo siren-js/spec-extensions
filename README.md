@@ -531,13 +531,15 @@ The following example shows how to represent the example
 
 The list of selected files, each file consisting of a filename, a file type, and
 a file body (the contents of the file). Intended for use by clients to keep
-track of selected files. This property is OPTIONAL and MUST be an array of
-[`File`][file] objects.
+track of selected files. This property is OPTIONAL and MUST be either a
+[`FileList`][file-list] object or an array of [`File`][file] objects.
 
 [file]: https://w3c.github.io/FileAPI/#dfn-file
+[file-list]: https://w3c.github.io/FileAPI/#dfn-filelist
 
 **Constraint validation:** If the field is [required](#required) and its `files`
-property is not a non-empty array of [`File`][file] objects, then the field is
+property is neither a non-empty [`FileList`][file-list] nor an array of
+[`File`][file] objects, then the field is
 [suffering from being missing](#validity-states).
 
 ### `hidden` Fields
