@@ -124,7 +124,7 @@ Since the `method` member was omitted, `GET` is used. The `type` member was also
 omitted, but `application/x-www-form-urlencoded` is always used for `GET`
 actions.
 
-If the `method` were explicityly `POST`, then the request will instead look as
+If the `method` were explicitly `POST`, then the request will instead look as
 follows:
 
 ```http
@@ -227,7 +227,7 @@ follows. It is adapted from HTML's algorithm for
       - `name` is not a non-empty string.
       - `field.disabled` is [truthy].
       - `type` is `"image"`.
-   1. Switch on `field.type` (case-insentive)
+   1. Switch on `field.type` (case-insensitive)
       - `"select"` (see [`select` Fields](#select-fields))
         1. If `field.options` is not an array, then continue.
         1. For each value `option` in `field.options`:
@@ -912,7 +912,7 @@ If this member is [truthy], the field is considered disabled.
 Declares inclusive upper (`maxlength`) or lower (`minlength`) bounds on the
 number of characters in a field's `value`.
 These properties MUST be either a number or a string representing a
-[valid non-negative ingeger][valid-non-negative-int].
+[valid non-negative integer][valid-non-negative-int].
 
 [valid-non-negative-int]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-non-negative-integer
 

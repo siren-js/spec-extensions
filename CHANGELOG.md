@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ### Changed
 
-* Clarified "type" as "data type" in recommendedation of fields' `value`'s type
+* Clarified "type" as "data type" in recommendation of fields' `value`'s type
 * Several field extension and common property descriptions to align with
   constraint validation
 * Clarified adaptation of the HTML specification
@@ -39,7 +39,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 * Column for specifying valid `value` formats; this is covered by constraint
   validation
 * Mentions of HTML's checkedness concept
-* Unnecessary use of the term "element" in the Placeholder Label Option seciton
+* Unnecessary use of the term "element" in the Placeholder Label Option section
 
 ## 0.2.0 - 2021-01-04
 
