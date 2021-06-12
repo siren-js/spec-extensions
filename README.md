@@ -257,9 +257,6 @@ follows. It is adapted from HTML's algorithm for
            as type, and an empty body.
         1. Otherwise, for each [file] `file` in `field.files`,
            [append an entry][aae] to `entryList` with `name` and `file`.
-      - `"textarea"` (see [`textarea` Fields](#textarea-fields))
-        1. [Append an entry][aae] to `entryList` with `name` and `field.value`,
-           and the _prevent line break normalization flag_ set.
       - Otherwise
         1. [append an entry][aae] to `entryList` with `name` and `field.value`.
 1. Return the `entryList`.
