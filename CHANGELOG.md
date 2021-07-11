@@ -10,6 +10,17 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ## Unreleased
 
+## 0.4.0
+
+### Changed
+
+- Submission of `application/x-www-form-urlencoded` and `text/plain` actions now
+  require [converting the entry list to name-value pairs][el2nvp] before running
+  the corresponding serializer. This realigns with the HTML standard and affects
+  newlines in fields' `name` and value.
+
+[el2nvp]: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#convert-to-a-list-of-name-value-pairs
+
 ## 0.3.0 - 2021-06-17
 
 ### Added
