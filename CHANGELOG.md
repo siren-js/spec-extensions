@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog][kac], and this project adheres to
 
 ## Unreleased
 
-## 0.4.0
+## 0.4.0 - 2021-07-17
 
 ### Changed
 
