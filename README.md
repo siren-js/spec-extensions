@@ -1,4 +1,22 @@
-# Siren Extensions
+## Introduction
+
+This document defines various extensions to the core [Siren] specification.
+
+[siren]: https://github.com/kevinswiber/siren
+
+### Conventions
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in [BCP 14] [[RFC2119]] [[RFC8174]]
+when, and only when, they appear in all capitals, as shown here.
+
+[bcp 14]: https://tools.ietf.org/html/bcp14
+[rfc2119]: https://tools.ietf.org/html/rfc2119
+[rfc8174]: https://tools.ietf.org/html/rfc8174
+
+<!-- omit in toc -->
+## Table of Contents
 
 - [Introduction](#introduction)
   - [Conventions](#conventions)
@@ -66,23 +84,6 @@
 - [Link Extensions](#link-extensions)
   - [`hreflang`](#hreflang)
   - [`media`](#media)
-
-## Introduction
-
-This document defines various extensions to the core [Siren] specification.
-
-[siren]: https://github.com/kevinswiber/siren
-
-### Conventions
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in [BCP 14] [[RFC2119]] [[RFC8174]]
-when, and only when, they appear in all capitals, as shown here.
-
-[bcp 14]: https://tools.ietf.org/html/bcp14
-[rfc2119]: https://tools.ietf.org/html/rfc2119
-[rfc8174]: https://tools.ietf.org/html/rfc8174
 
 ## Action Submission
 
